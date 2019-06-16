@@ -31,8 +31,8 @@
 &lt;p&gt;Enough with explanation. Let's load some data and get going with implementing multiple linear regression. &lt;/p&gt;
 &lt;p&gt;Loading the data&lt;/p&gt;
 &lt;p&gt;'''
-import pandas as pd
-df = pd.read_csv('sacramento.csv')
-df.head(2)
+    import pandas as pd
+    df = pd.read_csv('sacramento.csv')
+    df.head(2)
 '''&lt;/p&gt;
-&lt;p&gt;&lt;img alt="curious_george" src="" title="images\curious_george.jpg"&gt;&lt;/p&gt;</content><category term="python"></category></entry></feed>
+&lt;p&gt;&lt;img alt="curious_george" src="" title="C:\Users\m_mas\Desktop\Bitmaker_DSI\Understanding_Data\content\imagescurious_george.jpg"&gt;&lt;/p&gt;</content><category term="python"></category></entry></feed>
