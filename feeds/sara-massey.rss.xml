@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Understanding_Data - Sara Massey</title><link>https://SMassey25.github.io/Understanding_Data/</link><description></description><lastBuildDate>Thu, 13 Jun 2019 03:57:00 -0400</lastBuildDate><item><title>Testing!</title><link>https://SMassey25.github.io/Understanding_Data/blog-1.html</link><description>&lt;p&gt;Lorem ipsum dolor sit amet, consecteturSdkjgj dfd
-sdfldsfjkdsfk ds
-fsdfljdskf 
-sdfjdsflsd
-sjdfhnjdlskhflkdsfkldjsaflkdsaf;ldsfl;dsf&lt;/p&gt;
-&lt;p&gt;dsfdsfdsfdsf&lt;/p&gt;
-&lt;p&gt;&lt;img alt="curious_george" src="images\curious_george"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Sara Massey</dc:creator><pubDate>Thu, 13 Jun 2019 03:57:00 -0400</pubDate><guid isPermaLink="false">tag:smassey25.github.io,2019-06-13:/Understanding_Data/blog-1.html</guid><category>python</category></item></channel></rss>
+<rss version="2.0"><channel><title>Understanding_Data - Sara Massey</title><link>https://SMassey25.github.io/Understanding_Data/</link><description></description><lastBuildDate>Thu, 13 Jun 2019 03:57:00 -0400</lastBuildDate><item><title>What to do after EDA?</title><link>https://SMassey25.github.io/Understanding_Data/blog_1.html</link><description>&lt;h1&gt;What to do after EDA?&lt;/h1&gt;
+&lt;p&gt;Data science is divided into six steps:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1. Define problem.
+2. Gather Data
+3. Explore Data
+4. Model with Data
+5. Evaluate model
+6. Answer the problem.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once you are done with first three steps, you are ready to implement a model on your data …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Sara Massey</dc:creator><pubDate>Thu, 13 Jun 2019 03:57:00 -0400</pubDate><guid isPermaLink="false">tag:smassey25.github.io,2019-06-13:/Understanding_Data/blog_1.html</guid><category>python</category></item></channel></rss>
