@@ -29,9 +29,12 @@
 &lt;p&gt;In order to undestand this model, we should also understand the concept of residuals. Residuals are basically the differences between the true value of y and the predicted values of y, also known as ŷ. All in all, our goal to find a "line of the best fit" and to minimize the distance between the blue dots and the red line. In mathematical terms, we are trying to minimize mean squared error(MSE) or the sum of squares of error(SSE), also called the 'residual sum of square'. &lt;/p&gt;
 &lt;h1&gt;LR Picture&lt;/h1&gt;
 &lt;p&gt;Enough with explanation. Let's load some data and get going with implementing multiple linear regression. &lt;/p&gt;
-&lt;p&gt;Loading the data
-    def hello(name='max'):
-            print(name)
-        # max is the best...
-        hello()&lt;/p&gt;
-&lt;p&gt;&lt;img alt="curious_george" src="" title="C:\Users\m_mas\Desktop\Bitmaker_DSI\Understanding_Data\content\images\curious_george.jpg"&gt;&lt;/p&gt;</content><category term="python"></category></entry></feed>
+&lt;hr&gt;
+&lt;p&gt;Loading the data&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+    &lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sacramento.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="hmm" src="" title="images\curious_george.jpg"&gt;&lt;/p&gt;</content><category term="python"></category></entry></feed>

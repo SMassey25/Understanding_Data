@@ -34,12 +34,15 @@
 <p>In order to undestand this model, we should also understand the concept of residuals. Residuals are basically the differences between the true value of y and the predicted values of y, also known as ŷ. All in all, our goal to find a "line of the best fit" and to minimize the distance between the blue dots and the red line. In mathematical terms, we are trying to minimize mean squared error(MSE) or the sum of squares of error(SSE), also called the 'residual sum of square'. </p>
 <h1>LR Picture</h1>
 <p>Enough with explanation. Let's load some data and get going with implementing multiple linear regression. </p>
-<p>Loading the data
-    def hello(name='max'):
-            print(name)
-        # max is the best...
-        hello()</p>
-<p><img alt="curious_george" src="" title="C:\Users\m_mas\Desktop\Bitmaker_DSI\Understanding_Data\content\images\curious_george.jpg"></p>
+<hr>
+<p>Loading the data</p>
+<div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sacramento.csv&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="hmm" src="" title="images\curious_george.jpg"></p>
  </div>
 </div>
  </div>
