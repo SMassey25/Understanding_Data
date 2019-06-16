@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Understanding_Data</title><link href="https://SMassey25.github.io/Understanding_Data/" rel="alternate"></link><link href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" rel="self"></link><id>https://SMassey25.github.io/Understanding_Data/</id><updated>2019-06-13T03:57:00-04:00</updated><entry><title>What to do after EDA?</title><link href="https://SMassey25.github.io/Understanding_Data/blog_1.html" rel="alternate"></link><published>2019-06-13T03:57:00-04:00</published><updated>2019-06-13T03:57:00-04:00</updated><author><name>Sara Massey</name></author><id>tag:smassey25.github.io,2019-06-13:/Understanding_Data/blog_1.html</id><summary type="html">&lt;p&gt;Data science is divided into six steps:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Understanding_Data</title><link href="https://SMassey25.github.io/Understanding_Data/" rel="alternate"></link><link href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" rel="self"></link><id>https://SMassey25.github.io/Understanding_Data/</id><updated>2019-06-13T04:48:00-04:00</updated><entry><title>What to do after EDA?</title><link href="https://SMassey25.github.io/Understanding_Data/blog_1.html" rel="alternate"></link><published>2019-06-13T04:48:00-04:00</published><updated>2019-06-13T04:48:00-04:00</updated><author><name>Sara Massey</name></author><id>tag:smassey25.github.io,2019-06-13:/Understanding_Data/blog_1.html</id><summary type="html">&lt;p&gt;Data science is divided into six steps:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1. Define problem.
 2. Gather Data
 3. Explore Data
@@ -37,4 +37,4 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="hmm" src="" title="images\curious_george.jpg"&gt;&lt;/p&gt;</content><category term="python"></category></entry></feed>
+&lt;p&gt;&lt;img alt="hmm" src="" title="curious_george.jpg"&gt;&lt;/p&gt;</content><category term="python"></category></entry></feed>
