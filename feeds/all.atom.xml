@@ -26,7 +26,7 @@
 &lt;p&gt;If the model is examining relationship between two variables (x and y), the model is called a Simple Linear Regression(SLR). Mathmatically, SLR can be representd as &lt;strong&gt;&lt;em&gt;y = b0 + b1x1&lt;/em&gt;&lt;/strong&gt;. &lt;/p&gt;
 &lt;p&gt;On the other hand, if we are examining relationship between more than two vaiables(y and multiple values for x - also represented as X), the model is called a Multiple Linear Regression and it is represented as &lt;strong&gt;&lt;em&gt;y = b0 + b1x1 + b2x2...bnxn.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;In order to undestand this model, we should also understand the concept of residuals. Residuals are basically the differences between the true value of y and the predicted values of y, also known as ŷ. All in all, our goal to find a "line of the best fit" and to minimize the distance between the blue dots and the red line. In mathematical terms, we are trying to minimize mean squared error(MSE) or the sum of squares of error(SSE), also called the 'residual sum of square'. &lt;/p&gt;
-&lt;p&gt;&lt;img alt="residual_sum_of_sq_graph" src="images\r^2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="residual_sum_of_sq_graph" src="images\r^2.JPG"&gt;&lt;/p&gt;
 &lt;p&gt;Enough with explanation. Let's load some data and get going with implementing multiple linear regression. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="c1"&gt;#Loading the data&lt;/span&gt;
     &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
@@ -61,14 +61,14 @@ Also, if you get negative number that could mean that the model is arbitrarily w
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="above_code_output" src="images\code_2.jpg"&gt;
+&lt;p&gt;&lt;img alt="above_code_output" src="images\code_2.JPG"&gt;
 Here are some useful methods to get slope and intercept. Learn more about there &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html"&gt;here&lt;/a&gt;!&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;The slope is &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;coef_&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
     &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;The intercept is&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;intercept_&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="above_code_output" src="images\code_3.jpg"&gt;
+&lt;p&gt;&lt;img alt="above_code_output" src="images\code_3.JPG"&gt;
 &lt;img alt="meme1" src="images\LR.png"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;Train/Test Split and Cross Validation&lt;/h2&gt;
@@ -86,12 +86,12 @@ Not sure what is overfitting and underfitting? Check my previous post. &lt;/p&gt
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="above_code_output" src="images\code_4.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="above_code_output" src="images\code_4.JPG"&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;linreg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;score&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="above_code_output" src="images\code_5.jpg"&gt;
+&lt;p&gt;&lt;img alt="above_code_output" src="images\code_5.JPG"&gt;
 &lt;img alt="train_test_split" src="images\train_test_split.png"&gt;&lt;/p&gt;
 &lt;p&gt;Seems good, right? But what if, the split isn't random as it seems. What if only certain types of the houses are captured in our traning dataset or it only captures homes in one city. This is where &lt;strong&gt;&lt;em&gt;cross validation&lt;/em&gt;&lt;/strong&gt; comes in.There are multiple different types of cross validation, however in this post we will be focusing on K-Fold cross-validation. &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html"&gt;K-Fold Cross-validation&lt;/a&gt;, is very similar to train/test split, however it splits the dataset into k number of bins. For instance, if you have 150 rows in a dataset and your k = 3 bins, how many datapoints you have in each bin? 50 data rows in each dataset. 
@@ -111,10 +111,10 @@ TIP: Remember IMPORT, INSTANTIATE and FIT&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="above_code_output" src="images\code_6.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="above_code_output" src="images\code_6.JPG"&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cross_val_score&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;X_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cv&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;kf&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="above_code_output" src="images\code_7.jpg"&gt;
+&lt;p&gt;&lt;img alt="above_code_output" src="images\code_7.JPG"&gt;
 When there is a signifacnt difference between the model score for training and testing model, it means that the model is either overfit or underfit. You can "regularize" regression models to avoid overfitting, however that would be a post for another day. &lt;/p&gt;</content><category term="python"></category></entry></feed>
