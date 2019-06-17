@@ -14,26 +14,20 @@ Before we explain underfit and overfit, let's understand bias and variance. &lt;
 &lt;h2&gt;Overfitting&lt;/h2&gt;
 &lt;p&gt;On the other hand, overfitting is a result of a few too many independat variable. Instead of learning the pattern, the model would just memorize the points. It would even consider the noisy points or outliers to find a pattern. Even though the training model would give exceptional predictions, the results would not be replicated on the test dataset. SO if you see 99% accurancy on your traning dataset, be suspicious. This complex model would have high variance and low bias.
 &lt;img alt="bias_variance.jpg" src="images\high_variance.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;There are multiple techniques that are used to overcome both underfitting and overfitting however that is a post for another day.  &lt;/p&gt;</content><category term="python"></category></entry><entry><title>What to do after EDA?</title><link href="https://SMassey25.github.io/Understanding_Data/blog_1.html" rel="alternate"></link><published>2019-06-13T04:48:00-04:00</published><updated>2019-06-13T04:48:00-04:00</updated><author><name>Sara Massey</name></author><id>tag:smassey25.github.io,2019-06-13:/Understanding_Data/blog_1.html</id><summary type="html">&lt;p&gt;Data science is divided into six steps:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1. Define problem.
-2. Gather Data
-3. Explore Data
-4. Model with Data
-5. Evaluate model
-6. Answer the problem.
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Once you are done with first three steps, you are ready to implement a model on your data. This article will explain and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Data science is divided into six steps:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1. Define problem.
-2. Gather Data
-3. Explore Data
-4. Model with Data
-5. Evaluate model
-6. Answer the problem.
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;There are multiple techniques that are used to overcome both underfitting and overfitting however that is a post for another day.  &lt;/p&gt;</content><category term="python"></category></entry><entry><title>What to do after EDA?</title><link href="https://SMassey25.github.io/Understanding_Data/blog_1.html" rel="alternate"></link><published>2019-06-13T04:48:00-04:00</published><updated>2019-06-13T04:48:00-04:00</updated><author><name>Sara Massey</name></author><id>tag:smassey25.github.io,2019-06-13:/Understanding_Data/blog_1.html</id><summary type="html">&lt;p&gt;Data science is divided into six steps:
+1.Define problem.
+2.Gather Data
+3.Explore Data
+4.Model with Data
+5.Evaluate model
+6.Answer the problem.&lt;/p&gt;
+&lt;p&gt;Once you are done with first three steps, you are ready to implement a model on your data. This article will explain and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Data science is divided into six steps:
+1.Define problem.
+2.Gather Data
+3.Explore Data
+4.Model with Data
+5.Evaluate model
+6.Answer the problem.&lt;/p&gt;
 &lt;p&gt;Once you are done with first three steps, you are ready to implement a model on your data. This article will explain and implement the first model you should learn, Linear Regression. I will touch upon both test/train split and cross-validation to score our model as they are good habits to practice in the field of Data Science.&lt;/p&gt;
 &lt;p&gt;NOTE: I  &lt;strong&gt;&lt;em&gt;try&lt;/em&gt;&lt;/strong&gt; to keep math under the hood and keep it to only programming.  &lt;/p&gt;
 &lt;hr&gt;
