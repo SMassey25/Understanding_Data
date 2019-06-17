@@ -35,7 +35,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="above_code_output" src="images\code_1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="above_code_output" src="images\code_1.JPG"&gt;&lt;/p&gt;
 &lt;p&gt;TIP: Remember IMPORT, INSTANTIATE and FIT&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="c1"&gt;#Import&lt;/span&gt;
     &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.linear_model&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;LinearRegression&lt;/span&gt;
