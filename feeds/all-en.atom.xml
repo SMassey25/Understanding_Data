@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Understanding_Data</title><link href="https://SMassey25.github.io/Understanding_Data/" rel="alternate"></link><link href="https://SMassey25.github.io/Understanding_Data/feeds/all-en.atom.xml" rel="self"></link><id>https://SMassey25.github.io/Understanding_Data/</id><updated>2019-06-13T04:48:00-04:00</updated><entry><title>What to do after EDA?</title><link href="https://SMassey25.github.io/Understanding_Data/blog_1.html" rel="alternate"></link><published>2019-06-13T04:48:00-04:00</published><updated>2019-06-13T04:48:00-04:00</updated><author><name>Sara Massey</name></author><id>tag:smassey25.github.io,2019-06-13:/Understanding_Data/blog_1.html</id><summary type="html">&lt;p&gt;Data science is divided into six steps:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Understanding_Data</title><link href="https://SMassey25.github.io/Understanding_Data/" rel="alternate"></link><link href="https://SMassey25.github.io/Understanding_Data/feeds/all-en.atom.xml" rel="self"></link><id>https://SMassey25.github.io/Understanding_Data/</id><updated>2019-06-13T04:48:00-04:00</updated><entry><title>What to do after EDA?</title><link href="https://SMassey25.github.io/Understanding_Data/blog_1.html" rel="alternate"></link><published>2019-06-13T04:48:00-04:00</published><updated>2019-06-13T04:48:00-04:00</updated><author><name>Sara Massey</name></author><id>tag:smassey25.github.io,2019-06-13:/Understanding_Data/blog_1.html</id><summary type="html">&lt;p&gt;DData science is divided into six steps:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1. Define problem.
 2. Gather Data
 3. Explore Data
@@ -9,7 +9,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Once you are done with first three steps, you are ready to implement a model on your data. This article will explain and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Data science is divided into six steps:&lt;/p&gt;
+&lt;p&gt;Once you are done with first three steps, you are ready to implement a model on your data. This article will explain and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;DData science is divided into six steps:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1. Define problem.
 2. Gather Data
 3. Explore Data
@@ -19,22 +19,43 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Once you are done with first three steps, you are ready to implement a model on your data. This article will explain and implement the first model you should learn, Linear Regression. I will touch upon both test/train split and cross-validation to score our model, explain overfitting/underfitting in terms of machine learning and finally explain regularization techniques that can be used to overcome overfitting. &lt;/p&gt;
-&lt;p&gt;NOTE: I know this is also for a blog, but I  &lt;strong&gt;&lt;em&gt;try&lt;/em&gt;&lt;/strong&gt; to keep math under the hood and keep it to only programming.  &lt;/p&gt;
+&lt;p&gt;Once you are done with first three steps, you are ready to implement a model on your data. This article will explain and implement the first model you should learn, Linear Regression. I will touch upon both test/train split and cross-validation to score our model as they are good habits to practice in the field of Data Science. &lt;/p&gt;
+&lt;p&gt;NOTE: I  &lt;strong&gt;&lt;em&gt;try&lt;/em&gt;&lt;/strong&gt; to keep math under the hood and keep it to only programming.  &lt;/p&gt;
 &lt;hr&gt;
-&lt;h2&gt;Linear Regression, The First Model to Learn&lt;/h2&gt;
 &lt;p&gt;Linear regression is a statistical model that examines relationship between a dependant variable(y variable) and independant variables(one or more variables of x).&lt;/p&gt;
 &lt;p&gt;If the model is examining relationship between two variables (x and y), the model is called a Simple Linear Regression(SLR). Mathmatically, SLR can be representd as &lt;strong&gt;&lt;em&gt;y = b0 + b1x1&lt;/em&gt;&lt;/strong&gt;. &lt;/p&gt;
 &lt;p&gt;On the other hand, if we are examining relationship between more than two vaiables(y and multiple values for x - also represented as X), the model is called a Multiple Linear Regression and it is represented as &lt;strong&gt;&lt;em&gt;y = b0 + b1x1 + b2x2...bnxn.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;In order to undestand this model, we should also understand the concept of residuals. Residuals are basically the differences between the true value of y and the predicted values of y, also known as ŷ. All in all, our goal to find a "line of the best fit" and to minimize the distance between the blue dots and the red line. In mathematical terms, we are trying to minimize mean squared error(MSE) or the sum of squares of error(SSE), also called the 'residual sum of square'. &lt;/p&gt;
-&lt;h1&gt;LR Picture&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="residual_sum_of_sq_graph" src="images\blog_1\r^2.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Enough with explanation. Let's load some data and get going with implementing multiple linear regression. &lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Loading the data&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="c1"&gt;#Loading the data&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
     &lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sacramento.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="test" src="images\curious_george.jpg"&gt;&lt;/p&gt;</content><category term="python"></category></entry></feed>
+&lt;p&gt;&lt;img alt="above_code_output" src="images\blog_1\code_1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;TIP: Remember IMPORT, INSTANTIATE and FIT&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="c1"&gt;#Import&lt;/span&gt;
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.linear_model&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;LinearRegression&lt;/span&gt;
+    &lt;span class="c1"&gt;#Instantiate&lt;/span&gt;
+    &lt;span class="n"&gt;linreg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;LinearRegression&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;X&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sq_ft&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;price&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+    &lt;span class="c1"&gt;#Fit&lt;/span&gt;
+    &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linreg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.score"&gt;.predict&lt;/a&gt; uses the linear model and returns predicted values of y using X. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;yhat&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linreg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.score"&gt;.score&lt;/a&gt; returns the coefficient of residual sum of squares (R^2) of the prediction. The best score is usually between 0.0 and 1.0. However, be suspecious if you get 1.0
+Also, if you get negative number that could mean that the model is arbitrarily worse. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;yhat&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;yhat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reshape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;yhat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
+    &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;score&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;yhat&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category></entry></feed>

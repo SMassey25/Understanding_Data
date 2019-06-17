@@ -14,7 +14,7 @@
  <div class="col-md-8">
   <h3>What to do after EDA?</h3>
   <label>2019-06-13</label>
-  <p>Data science is divided into six steps:</p>
+  <p>DData science is divided into six steps:</p>
 <div class="highlight"><pre><span></span>1. Define problem.
 2. Gather Data
 3. Explore Data
@@ -24,25 +24,46 @@
 </pre></div>
 
 
-<p>Once you are done with first three steps, you are ready to implement a model on your data. This article will explain and implement the first model you should learn, Linear Regression. I will touch upon both test/train split and cross-validation to score our model, explain overfitting/underfitting in terms of machine learning and finally explain regularization techniques that can be used to overcome overfitting. </p>
-<p>NOTE: I know this is also for a blog, but I  <strong><em>try</em></strong> to keep math under the hood and keep it to only programming.  </p>
+<p>Once you are done with first three steps, you are ready to implement a model on your data. This article will explain and implement the first model you should learn, Linear Regression. I will touch upon both test/train split and cross-validation to score our model as they are good habits to practice in the field of Data Science. </p>
+<p>NOTE: I  <strong><em>try</em></strong> to keep math under the hood and keep it to only programming.  </p>
 <hr>
-<h2>Linear Regression, The First Model to Learn</h2>
 <p>Linear regression is a statistical model that examines relationship between a dependant variable(y variable) and independant variables(one or more variables of x).</p>
 <p>If the model is examining relationship between two variables (x and y), the model is called a Simple Linear Regression(SLR). Mathmatically, SLR can be representd as <strong><em>y = b0 + b1x1</em></strong>. </p>
 <p>On the other hand, if we are examining relationship between more than two vaiables(y and multiple values for x - also represented as X), the model is called a Multiple Linear Regression and it is represented as <strong><em>y = b0 + b1x1 + b2x2...bnxn.</em></strong></p>
 <p>In order to undestand this model, we should also understand the concept of residuals. Residuals are basically the differences between the true value of y and the predicted values of y, also known as ŷ. All in all, our goal to find a "line of the best fit" and to minimize the distance between the blue dots and the red line. In mathematical terms, we are trying to minimize mean squared error(MSE) or the sum of squares of error(SSE), also called the 'residual sum of square'. </p>
-<h1>LR Picture</h1>
+<p><img alt="residual_sum_of_sq_graph" src="images\blog_1\r^2.jpg"></p>
 <p>Enough with explanation. Let's load some data and get going with implementing multiple linear regression. </p>
-<hr>
-<p>Loading the data</p>
-<div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span>    <span class="c1">#Loading the data</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sacramento.csv&#39;</span><span class="p">)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
 
-<p><img alt="test" src="images\curious_george.jpg"></p>
+<p><img alt="above_code_output" src="images\blog_1\code_1.jpg"></p>
+<p>TIP: Remember IMPORT, INSTANTIATE and FIT</p>
+<div class="highlight"><pre><span></span>    <span class="c1">#Import</span>
+    <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+    <span class="c1">#Instantiate</span>
+    <span class="n">linreg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;sq_ft&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span>
+    <span class="c1">#Fit</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">linreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+
+<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.score">.predict</a> uses the linear model and returns predicted values of y using X. </p>
+<div class="highlight"><pre><span></span>    <span class="n">yhat</span> <span class="o">=</span> <span class="n">linreg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+
+
+<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.score">.score</a> returns the coefficient of residual sum of squares (R^2) of the prediction. The best score is usually between 0.0 and 1.0. However, be suspecious if you get 1.0
+Also, if you get negative number that could mean that the model is arbitrarily worse. </p>
+<div class="highlight"><pre><span></span>    <span class="n">yhat</span> <span class="o">=</span> <span class="n">yhat</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">yhat</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">yhat</span><span class="p">)</span>
+</pre></div>
  </div>
 </div>
  </div>
