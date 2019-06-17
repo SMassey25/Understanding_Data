@@ -100,9 +100,9 @@ Not sure what is overfitting and underfitting? Check my <a href="https://smassey
 <img alt="train_test_split" src="images\train_test_split.png"></p>
 <p>Seems good, right? But what if, the split isn't random as it seems. What if only certain types of the houses are captured in our training dataset or it only captures homes in one city. This is where <strong><em>cross validation</em></strong> comes in. There are multiple different types of cross validation, however in this post we will be focusing on K-Fold cross-validation.</p>
 <p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html">K-Fold Cross-validation</a>, is very similar to train/test split, however it splits the dataset into k number of bins. For instance, if you have 150 rows in a dataset and your k = 3 bins, how many data points you have in each bin? 50 data rows in each dataset.
-So if you run 3-Fold cross validation on your data, it would pick one of the three sub-divisions as testing set and the other two as training dataset. It would fit the model on the training dataset, score the model on the testing dataset and run this process k times. You can the use the cross_val_score to get the $R^2$ score for each testing set.<br>
-<img alt="train_test_split" src="images\cross_validation.png">
-TIP: Remember IMPORT, INSTANTIATE and FIT</p>
+So if you run 3-Fold cross validation on your data, it would pick one of the three sub-divisions as testing set and the other two as training dataset. It would fit the model on the training dataset, score the model on the testing dataset and run this process k times. You can the use the cross_val_score to get the $R^2$ score for each testing set.  </p>
+<p><img alt="train_test_split" src="images\cross_validation.png"></p>
+<p>TIP: Remember IMPORT, INSTANTIATE and FIT</p>
 <div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
     <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
     <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
