@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
  <title>Classification Metrics</title>
+ <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
  <!-- Latest compiled and minified CSS -->
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
  <div class="container">
@@ -267,7 +268,7 @@ discrepancy.</p>
 <p>Now that we sort-off understand the four terms, we can use them create multiple classification metrics such as accuracy, precision, recall and f1-score. </p>
 <h3>Accuracy</h3>
 <p>To begin with, accuracy accounts for the overall performance of the model. We could also say that it is a ratio of correctly predicted observations to the total observations. The formula for accuracy is following: </p>
-<p>$$
+<p lang="latex">$$
 Accuracy = \frac{\text{TP + TN}}{\text{TP + FP + FN + TN}} = \frac{\text{1013 + 986}}{\text{1013 + 98 + 5 + 27}} = 0.9842
 $$</p>
 <p>Intuitively, accuracy seems to be logical and one would think about just using this as a evaluation tool of the model. However, accuracy score falls short when there are unbalanced classes. In other words, accurancy is not reliable when there are more TP over TN or vice versa. For instance, if you have 100 credit transactions and out of those you have 5 credit fraud cases. If our model only predicts no fraud cases, our model would be 95% accurate. Therefore, accuracy should not be used when the target variables are not balanced. We calculated using the formula, now let us see how was can implement accuracy_score and get similar if not exact same score:</p>
@@ -283,7 +284,7 @@ $$</p>
 
 <h3>Precision</h3>
 <p>Precision on the other hand, only calculates how accurate the predictions regarding the positive case are(poisonous mushrooms are positive case in our example).Precision is calculated by taking the ratio of correctly predicted positive observations to the total predicted positive observations. The formula for precision is following: </p>
-<p>$$
+<p lang="latex">$$
 Precision = \frac{\text{TP}}{\text{TP + FP}} = \frac{\text{1013}}{\text{1013 + 27}} = 0.9740
 $$</p>
 <p>All in all, precision gives us the number in terms of our positive case. In the mushroom example, we are worried about the FP as marking an poisonous mushroom edible is harmful or deadly. Let us implement precision using sklearn. </p>
@@ -300,7 +301,7 @@ $$</p>
 
 <h3>Recall</h3>
 <p>Recall also know as sensitivity is a score for the coverage of actual positive sample. Recall is calculated by taking the ratio of correctly predicted positive cases to the all cases are in actual class. Let's look at the formula as it helped me understand the concept so it might help you too! </p>
-<p>$$
+<p lang="latex">$$
 Recall = \frac{\text{TP}}{\text{TP + FN}} = \frac{\text{1013}}{\text{1013 + 5}} = 0.995
 $$</p>
 <p>For our example, recall score would judge how well our model predicted positive cases when the actual case was positive. There is a trade-off between precision and recall score. Which evaluation metrics you use, depends on each problem. </p>
@@ -326,10 +327,10 @@ $$</p>
 3. TN = 0
 4. FN = 0</p>
 <p>Based on the above numbers, our precision and recall are following:</p>
-<p>$$
+<p lang="latex">$$
 Precision = \frac{\text{TP}}{\text{TP + FP}} = \frac{\text{5}}{\text{5 + 95}} = 0.05 = 5\%
 $$</p>
-<p>$$
+<p lang="latex">$$
 Recall = \frac{\text{TP}}{\text{TP + FN}} = \frac{\text{3}}{\text{3}} = 100\%
 $$</p>
 <p>Now if we take mean of both calculations, we get a model that did  52.5% on both precision and recall. Hopefully, you can see how this horrible model gets a mean score of 52.5%. Not good eh? </p>
@@ -373,7 +374,7 @@ Regular Mean of: [1000, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
 </pre></div>
 
 
-<p>​  <br>
+<br>
     Adding a small number(12)
     Harmonic mean of: [12, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
     30.51940326329871</p>
@@ -384,7 +385,7 @@ Regular Mean of: [1000, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
 
 <p>You can see that in the above three examples, the harmonic mean stayed in the range of 30 even though we added a 1000 in the range. However, mean got inflated to 99.33. 
 In conclusion, harmonic mean gives out a weighted average that favors smaller numbers and ignore really big outliers. The formula of F1 score in terms of precision and recall is as follows:
-$$
+<p lang="latex">$$
 F1 = \frac{\text{2* Precision * Recall}}{\text{ Precision + Recall}}
 $$</p>
 <p>Hopefully, now you see how harmonic mean is better than regular mean. Let us implement it now.</p>
