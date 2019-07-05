@@ -17,12 +17,12 @@
   <p><em>Numbers have an important story to tell. They rely on you to give them a voice</em> - <strong>Alex Peiniger</strong></p>
 <p>Once you are done with your EDA and implemented a model, we need to evaluate how well a model has performed and this is done using multiple evaluation metrics.
 In this post, I will briefly explain how classification problems are different than regression problems. I will load the <a href="https://www.kaggle.com/uciml/mushroom-classification">Mushroom Classification</a> dataset, implement and explain mulutiple classification metrics such as, accuracy, precision, recall(sensitivity), specificity and finally my exotic classification metrics, F1 Score. </p>
-<p><img alt="blog2_number.jpg" src="images/blog2_number.jpg"></p>
+<p><img alt="blog2_number.jpg" src="images\blog2_number.jpg"></p>
 <h3>Regression VS Classification</h3>
 <p>Machine Learning consists of many techniques to answer certain types of questions. These algorithms can be divided into the type of outputs they produce, that is, either continuous or discreate.</p>
 <p>Regression models are used to predict continuous values. That is, the outputs of a regression models are not confined to a set of bins or labels. Predicting prices of a phone based on the model and_____ can be seen as a regression problem.</p>
 <p>On the other hand, classification models predict discrete values. That is, the predicted value is one of the possible outcomes in  the finite set. A classification regression that predicts one of the two values is called binary classification. Predicting <a href="https://www.youtube.com/watch?v=pqTntG1RXSY">hotdog/not hotdog</a> is an example of binary classification. In contrast, predicting one of multiple possible outcomes is called a multi-label classification. Customer segmentation is a good example of multi-label classification problem.</p>
-<p><img alt="blog2_RegVClass.jpeg" src="images/blog2_RegVClass.jpeg"></p>
+<p><img alt="blog2_RegVClass.jpeg" src="images\blog2_RegVClass.jpeg"></p>
 <p>Now that we understand the difference between regression and classification problems, let's load the mushroom clssification dataset, use mapper to convert strings into numbers for the models, fit the easiest classification model aka, decision trees and finally score it on different metrics. 
 NOTE: Mushroom dataset is binary classification problem as we have to predict whether the mushroom is poisonous or edible.
 Let's get started!</p>
@@ -209,7 +209,7 @@ Let's get started!</p>
 
 <p>Just to sum up, I implemented logistic regression in the above code and predicted values for my X_test dataset. I dropped some columns from my X_train and X_test just so that I can get more 
 discrepancy.</p>
-<p><img alt="blog2_final.png" src="images/blog2_final.png"></p>
+<p><img alt="blog2_final.png" src="images\blog2_final.png"></p>
 <h3>Confusion Matrix</h3>
 <p>Confusion Matrix is not an evaluation model, however it can be used to find correctness and accuracy of a model. In addition,  most of the classification matrics are based on the terms and numbers evaluated by it. Therefore, I will implement confusion matrix and then <strong>try</strong> to explain the terms associated with it.</p>
 <p><em>Note: For this example, 1 represents my positive condition that is, that the mushroom is poisonous and 0 represents my negative condition that is, the mushroom is edible. Seems weird but think in terms of disease</em></p>
@@ -262,13 +262,13 @@ discrepancy.</p>
 <p>Now that we analyzed diagonal from top-left to bottom-right, let's look at the other diagonal. The other two values, that is 27 and 5 are called False Positive and False Negative, respectively. These terms are probably what adds confusion in the confusion matrix, so let's go. </p>
 <p><strong><em>False Positive(FP)</em></strong> values are the cases when positive condition is NOT predicted correctly. That is, the model predicted 0 and the actual value was 1. In our example, 27 is the False Positive value, representing poisonous mushrooms that were predicted to be edible.</p>
 <p><strong><em>False Negatives(TN)</em></strong> values are the cases when negative condition is NOT correctly predicted. In other words, the model predicted 1 and the actual value was also 0. In this example, 5 is the False Negative value, as it represents edible mushrooms that were deemed poisonous.</p>
-<p><img alt="blog2_confusionMatrix.png" src="attachment:blog2_confusionMatrix.png"></p>
+<p><img alt="blog2_confusionMatrix.png" src="images\blog2_confusionMatrix.png"></p>
 <p>Now that we sort-off understand the four terms, we can use them create multiple classification metrics such as accuracy, precision, recall and f1-score. </p>
 <h3>Accuracy</h3>
 <p>To begin with, accuracy accounts for the overall perfomrmance of the model. We could also say that it is a ratio of correctly predicted oberservations to the total oberservations. The formula for accuracy is following: </p>
-$$
+<p>$$
 Accuracy = \frac{\text{TP + TN}}{\text{TP + FP + FN + TN}} = \frac{\text{1013 + 986}}{\text{1013 + 98 + 5 + 27}} = 0.9842
-$$
+$$</p>
 <p>intuitively, accuracy seems to be logical and one would think about just using this as a evaluation tool of the model. However, accuracy score falls short when there are unbalanced classes. In other words, accurancy is not reliable when there are more TP over TN or vice versa. For instance, if you have 100 credit transactions and out of those you have 5 credit fraud cases. If our model only predicts no fraud cases, our model would be 95% accurate. Therefore, accuracy should not be used when the target variables are not balanced. We calculated using the formula, now let us see how was can implement accuracy_score and get similar if not exact same score:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 <span class="n">ac</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">predicted</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
@@ -282,9 +282,9 @@ $$
 
 <h3>Precision</h3>
 <p>Precision on the other hand, only calculates how accurate the predictions regarding the positive case are(poisonous mushrooms are positive case in our example).Precision is calculated by taking the ratio of corectly predicted positive oberservations to the total predicted positive oberservations. The formula for precision is following: </p>
-$$
+<p>$$
 Precision = \frac{\text{TP}}{\text{TP + FP}} = \frac{\text{1013}}{\text{1013 + 27}} = 0.9740
-$$
+$$</p>
 <p>All in all, precision gives us the number in terms of our positive case. In the mushroom example, we are worried about the FP as marking an poisonous mushroom edible is harmful or deadly. Let us implement precision using sklearn. </p>
 <p>Remember: High precision relates to the low false positive rate. </p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span>
@@ -299,9 +299,9 @@ $$
 
 <h3>Recall</h3>
 <p>Recall also know as sensitivity is a score for the coverage of actual positive sample. Recall is calculated by taking the ratio of correctly predicted positive cases to the all cases are in actual class. Let's look at the formula as it helped me understand the concept so it might help you too! </p>
-$$
+<p>$$
 Recall = \frac{\text{TP}}{\text{TP + FN}} = \frac{\text{1013}}{\text{1013 + 5}} = 0.995
-$$
+$$</p>
 <p>For our example, recall score would judge how well our model predicted positive cases when the actual case was positive. There is a trade-off between precision and recall score. Which evaluation metrics you use, depends on each problem. </p>
 <p>Note: Specificity is another classification metrics that is the opposite of Recall. </p>
 <p>Let's us implement recall from sklearn. </p>
@@ -325,13 +325,12 @@ $$
 3. TN = 0
 4. FN = 0</p>
 <p>Based on the above numbers, our precsion and recall are following:</p>
-$$
+<p>$$
 Precision = \frac{\text{TP}}{\text{TP + FP}} = \frac{\text{5}}{\text{5 + 95}} = 0.05 = 5\%
-$$
-  <p></p>
-$$
+$$</p>
+<p>$$
 Recall = \frac{\text{TP}}{\text{TP + FN}} = \frac{\text{3}}{\text{3}} = 100\%
-$$
+$$</p>
 <p>Now if we take mean of both calculations, we get a model that did  52.5% on both precision and recall. Hopefully, you can see how this horrible model gets a mean score of 52.5%. Not good eh? </p>
 <p>Let's us take a different approach and instead of using mean, we can try harmonic mean. Harmonic mean can be defined as the "reciprocal of the airthmetic mean of the reciprocal". Another way to look at harmonic mean would mean when X and Y are on opposite ends, i.e 5 and 100. Mean gives a value that gives more weight to the bigger value, however in harmonic mean we get a value that gives more weight to the smaller value. Let me show you so math and hopefully that gives a more clear picture. </p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
@@ -383,9 +382,9 @@ Regular Mean of: [12, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
 
 <p>You can see that in the above three examples, the harmonic mean stayed in the range of 30 even though we added a 1000 in the range. However, mean got inflated to 99.33. 
 In conclusion, harmonic mean gives out a weighted average that favours smaller numbers and ignore really big outliers. The formula of F1 score in terms of precision and recall is as follows:</p>
-$$
+<p>$$
 F1 = \frac{\text{2* Precision * Recall}}{\text{ Precision + Recall}}
-$$
+$$</p>
 <p>Hopefully, now you see how harmonic mean is better than regular mean. Let us implement it now.</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
 <span class="n">f1s</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;micro&#39;</span><span class="p">)</span>
@@ -399,7 +398,6 @@ $$
 
 <p>Hmm, not the best F1-score but I will surely update this post once I find a good dataset to show you the F1-score. I tried explaining all the terms that could help you understand F1 score, starting from confusion matrix to precision and recall. Let me know if you any following questions. </p>
 <p><img alt="blog2_intro.png" src="images\blog2_intro.png"></p>
-  
  </div>
 </div>
  </div>
