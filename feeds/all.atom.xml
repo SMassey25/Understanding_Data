@@ -360,7 +360,7 @@ discrepancy.&lt;/p&gt;
 
 &lt;h3&gt;Recall&lt;/h3&gt;
 &lt;p&gt;Recall also know as sensitivity is a score for the coverage of actual positive sample. Recall is calculated by taking the ratio of correctly predicted positive cases to the all cases are in actual class. Let's look at the formula as it helped me understand the concept so it might help you too!&lt;/p&gt;
-&lt;p&gt;&lt;img alt="blog_2_recall.jpg" src="images\blog_2_recall.JPG"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="blog_2_recall.jpg" src="images\blog2_recall.JPG"&gt;&lt;/p&gt;
 &lt;p&gt;For our example, recall score would judge how well our model predicted positive cases when the actual case was positive. There is a trade-off between precision and recall score. Which evaluation metrics you use, depends on each problem.&lt;/p&gt;
 &lt;p&gt;Note: Specificity is another classification metrics that is the opposite of Recall.&lt;/p&gt;
 &lt;p&gt;Let's us implement recall from sklearn.&lt;/p&gt;
