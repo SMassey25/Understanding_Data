@@ -331,9 +331,7 @@ discrepancy.&lt;/p&gt;
 &lt;p&gt;Now that we sort-off understand the four terms, we can use them create multiple classification metrics such as accuracy, precision, recall and f1-score.&lt;/p&gt;
 &lt;h3&gt;Accuracy&lt;/h3&gt;
 &lt;p&gt;To begin with, accuracy accounts for the overall performance of the model. We could also say that it is a ratio of correctly predicted observations to the total observations. The formula for accuracy is following:&lt;/p&gt;
-&lt;p&gt;$$
-Accuracy = \frac{\text{TP + TN}}{\text{TP + FP + FN + TN}} = \frac{\text{1013 + 986}}{\text{1013 + 98 + 5 + 27}} = 0.9842
-$$&lt;/p&gt;
+&lt;p&gt;&lt;img alt="blog2_accuracy.jpg" src="images\blog_2_accuracy.JPG"&gt;&lt;/p&gt;
 &lt;p&gt;Intuitively, accuracy seems to be logical and one would think about just using this as a evaluation tool of the model. However, accuracy score falls short when there are unbalanced classes. In other words, accurancy is not reliable when there are more TP over TN or vice versa. For instance, if you have 100 credit transactions and out of those you have 5 credit fraud cases. If our model only predicts no fraud cases, our model would be 95% accurate. Therefore, accuracy should not be used when the target variables are not balanced. We calculated using the formula, now let us see how was can implement accuracy_score and get similar if not exact same score:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.metrics&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;accuracy_score&lt;/span&gt;
 &lt;span class="n"&gt;ac&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;accuracy_score&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;predicted&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y_test&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -347,9 +345,7 @@ $$&lt;/p&gt;
 
 &lt;h3&gt;Precision&lt;/h3&gt;
 &lt;p&gt;Precision on the other hand, only calculates how accurate the predictions regarding the positive case are(poisonous mushrooms are positive case in our example).Precision is calculated by taking the ratio of correctly predicted positive observations to the total predicted positive observations. The formula for precision is following:&lt;/p&gt;
-&lt;p&gt;$$
-Precision = \frac{\text{TP}}{\text{TP + FP}} = \frac{\text{1013}}{\text{1013 + 27}} = 0.9740
-$$&lt;/p&gt;
+&lt;p&gt;&lt;img alt="blog_2_precision.jpg" src="images\blog_2_precision.JPG"&gt;&lt;/p&gt;
 &lt;p&gt;All in all, precision gives us the number in terms of our positive case. In the mushroom example, we are worried about the FP as marking an poisonous mushroom edible is harmful or deadly. Let us implement precision using sklearn.&lt;/p&gt;
 &lt;p&gt;Remember: High precision relates to the low false positive rate.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.metrics&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;precision_score&lt;/span&gt;
@@ -364,9 +360,7 @@ $$&lt;/p&gt;
 
 &lt;h3&gt;Recall&lt;/h3&gt;
 &lt;p&gt;Recall also know as sensitivity is a score for the coverage of actual positive sample. Recall is calculated by taking the ratio of correctly predicted positive cases to the all cases are in actual class. Let's look at the formula as it helped me understand the concept so it might help you too!&lt;/p&gt;
-&lt;p&gt;$$
-Recall = \frac{\text{TP}}{\text{TP + FN}} = \frac{\text{1013}}{\text{1013 + 5}} = 0.995
-$$&lt;/p&gt;
+&lt;p&gt;&lt;img alt="blog_2_recall.jpg" src="images\blog_2_recall.JPG"&gt;&lt;/p&gt;
 &lt;p&gt;For our example, recall score would judge how well our model predicted positive cases when the actual case was positive. There is a trade-off between precision and recall score. Which evaluation metrics you use, depends on each problem.&lt;/p&gt;
 &lt;p&gt;Note: Specificity is another classification metrics that is the opposite of Recall.&lt;/p&gt;
 &lt;p&gt;Let's us implement recall from sklearn.&lt;/p&gt;
@@ -380,7 +374,7 @@ $$&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;All in all, all these terms can be used to get understand another classification metrics, F1-Score. But I guess the blog is already too so let's keep that for another day.&lt;/p&gt;</content><category term="python"></category></entry><entry><title>Overfitting vs Underfitting - Looking for the sweet spot</title><link href="https://SMassey25.github.io/Understanding_Data/blog_1_prerequisites.html" rel="alternate"></link><published>2019-06-13T06:48:00-04:00</published><updated>2019-06-13T06:48:00-04:00</updated><author><name>Sara Massey</name></author><id>tag:smassey25.github.io,2019-06-13:/Understanding_Data/blog_1_prerequisites.html</id><summary type="html">&lt;p&gt;Generalization is a machine learning concept that evaluates how a model performs on testing or unseen data. A model could score 99% accuracy on a training model, however if it cannot replicate the accuracy results then the model is useless. Our model could either underfit or overfit in these situations …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Generalization is a machine learning concept that evaluates how a model performs on testing or unseen data. A model could score 99% accuracy on a training model, however if it cannot replicate the accuracy results then the model is useless. Our model could either underfit or overfit in these situations, all to say that they both fail to predict patterns in the data.
+&lt;p&gt;All in all, all these terms can be used to get understand another classification metrics, F1-Score. But I guess the blog is already too long, so let's keep that for another day.&lt;/p&gt;</content><category term="python"></category></entry><entry><title>Overfitting vs Underfitting - Looking for the sweet spot</title><link href="https://SMassey25.github.io/Understanding_Data/blog_1_prerequisites.html" rel="alternate"></link><published>2019-06-13T06:48:00-04:00</published><updated>2019-06-13T06:48:00-04:00</updated><author><name>Sara Massey</name></author><id>tag:smassey25.github.io,2019-06-13:/Understanding_Data/blog_1_prerequisites.html</id><summary type="html">&lt;p&gt;Generalization is a machine learning concept that evaluates how a model performs on testing or unseen data. A model could score 99% accuracy on a training model, however if it cannot replicate the accuracy results then the model is useless. Our model could either underfit or overfit in these situations …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Generalization is a machine learning concept that evaluates how a model performs on testing or unseen data. A model could score 99% accuracy on a training model, however if it cannot replicate the accuracy results then the model is useless. Our model could either underfit or overfit in these situations, all to say that they both fail to predict patterns in the data.
 Before we explain underfit and overfit, let's understand bias and variance.
 &lt;img alt="bias_variance.jpg" src="images\bias_variance.JPG"&gt;&lt;/p&gt;
 &lt;p&gt;Bias and variance are two predictive models that can differentiate a good model from a not so good model.&lt;/p&gt;

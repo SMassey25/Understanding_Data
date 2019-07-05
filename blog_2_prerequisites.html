@@ -284,9 +284,7 @@ discrepancy.</p>
 <p>Now that we sort-off understand the four terms, we can use them create multiple classification metrics such as accuracy, precision, recall and f1-score.</p>
 <h3>Accuracy</h3>
 <p>To begin with, accuracy accounts for the overall performance of the model. We could also say that it is a ratio of correctly predicted observations to the total observations. The formula for accuracy is following:</p>
-<p>$$
-Accuracy = \frac{\text{TP + TN}}{\text{TP + FP + FN + TN}} = \frac{\text{1013 + 986}}{\text{1013 + 98 + 5 + 27}} = 0.9842
-$$</p>
+<p><img alt="blog2_accuracy.jpg" src="images\blog_2_accuracy.JPG"></p>
 <p>Intuitively, accuracy seems to be logical and one would think about just using this as a evaluation tool of the model. However, accuracy score falls short when there are unbalanced classes. In other words, accurancy is not reliable when there are more TP over TN or vice versa. For instance, if you have 100 credit transactions and out of those you have 5 credit fraud cases. If our model only predicts no fraud cases, our model would be 95% accurate. Therefore, accuracy should not be used when the target variables are not balanced. We calculated using the formula, now let us see how was can implement accuracy_score and get similar if not exact same score:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 <span class="n">ac</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">predicted</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
@@ -300,9 +298,7 @@ $$</p>
 
 <h3>Precision</h3>
 <p>Precision on the other hand, only calculates how accurate the predictions regarding the positive case are(poisonous mushrooms are positive case in our example).Precision is calculated by taking the ratio of correctly predicted positive observations to the total predicted positive observations. The formula for precision is following:</p>
-<p>$$
-Precision = \frac{\text{TP}}{\text{TP + FP}} = \frac{\text{1013}}{\text{1013 + 27}} = 0.9740
-$$</p>
+<p><img alt="blog_2_precision.jpg" src="images\blog_2_precision.JPG"></p>
 <p>All in all, precision gives us the number in terms of our positive case. In the mushroom example, we are worried about the FP as marking an poisonous mushroom edible is harmful or deadly. Let us implement precision using sklearn.</p>
 <p>Remember: High precision relates to the low false positive rate.</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span>
@@ -317,9 +313,7 @@ $$</p>
 
 <h3>Recall</h3>
 <p>Recall also know as sensitivity is a score for the coverage of actual positive sample. Recall is calculated by taking the ratio of correctly predicted positive cases to the all cases are in actual class. Let's look at the formula as it helped me understand the concept so it might help you too!</p>
-<p>$$
-Recall = \frac{\text{TP}}{\text{TP + FN}} = \frac{\text{1013}}{\text{1013 + 5}} = 0.995
-$$</p>
+<p><img alt="blog_2_recall.jpg" src="images\blog_2_recall.JPG"></p>
 <p>For our example, recall score would judge how well our model predicted positive cases when the actual case was positive. There is a trade-off between precision and recall score. Which evaluation metrics you use, depends on each problem.</p>
 <p>Note: Specificity is another classification metrics that is the opposite of Recall.</p>
 <p>Let's us implement recall from sklearn.</p>
@@ -333,7 +327,7 @@ $$</p>
 </pre></div>
 
 
-<p>All in all, all these terms can be used to get understand another classification metrics, F1-Score. But I guess the blog is already too so let's keep that for another day.</p>
+<p>All in all, all these terms can be used to get understand another classification metrics, F1-Score. But I guess the blog is already too long, so let's keep that for another day.</p>
     </div><!-- /.entry-content -->
 
   </article>
