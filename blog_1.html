@@ -2,36 +2,44 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Getting Started with Linear Regression</title>
-        <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/main.css" />
-        <link href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Understanding_Data Atom Feed" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Understanding_Data | Getting Started with Linear Regression</title>
+    <link rel="shortcut icon" type="image/png" href="https://SMassey25.github.io/Understanding_Data/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://SMassey25.github.io/Understanding_Data/favicon.ico">
+    <link href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Understanding_Data Full Atom Feed" />
+    <link href="https://SMassey25.github.io/Understanding_Data/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="Understanding_Data Categories Atom Feed" />
+    <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="Sara Massey" />
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <meta name="keywords" content="python" />
 </head>
-
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://SMassey25.github.io/Understanding_Data/">Understanding_Data </a></h1>
-                <nav><ul>
-                    <li class="active"><a href="https://SMassey25.github.io/Understanding_Data/category/misc.html">misc</a></li>
-                </ul>
-                </nav>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
+<body>
     <header>
-      <h1 class="entry-title">
-        <a href="https://SMassey25.github.io/Understanding_Data/blog_1.html" rel="bookmark"
-           title="Permalink to Getting Started with Linear Regression">Getting Started with Linear Regression</a></h1>
+        <nav>
+            <ul>
+                <li><a href="https://SMassey25.github.io/Understanding_Data/">Home</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="https://SMassey25.github.io/Understanding_Data/">Understanding_Data</a></h1>
+        </div>
     </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jun 13, 2019</h4>
 
-    <div class="entry-content">
-<footer class="post-info">
-        <span>Thu 13 June 2019</span>
-<span>| tags: <a href="https://SMassey25.github.io/Understanding_Data/tag/python.html">python</a></span>
-</footer><!-- /.post-info -->      <p>On every site you go regarding data science workflow, it starts with defining the problem, gathering/cleaning and exploring the data. However, what to do after you are done with exploratory data analysis. The next two steps includes building a model and evaluating your model to answer the problem.</p>
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://SMassey25.github.io/Understanding_Data/blog_1.html" rel="bookmark" title="Permanent Link to &quot;Getting Started with Linear Regression&quot;">Getting Started with Linear Regression</a>
+                </h2>
+
+                
+                
+
+                <p>On every site you go regarding data science workflow, it starts with defining the problem, gathering/cleaning and exploring the data. However, what to do after you are done with exploratory data analysis. The next two steps includes building a model and evaluating your model to answer the problem.</p>
 <p>In this post I will try to explain the first model that I implemented, Linear Regression. I will touch upon both test/train split and cross-validation to score our model as they are good habits to practice in the field of Data Science.</p>
 <p>NOTE: I  <strong><em>try</em></strong> to keep math under the hood and keep it to only programming.   </p>
 <hr>
@@ -131,23 +139,25 @@ So if you run 3-Fold cross validation on your data, it would pick one of the thr
 
 <p><img alt="above_code_output" src="images\code_7.JPG">
 When there is a significant difference between the model score for training and testing model, it means that the model is either overfit or underfit. You can "regularize" regression models to avoid overfitting, however that would be a post for another day.</p>
-    </div><!-- /.entry-content -->
+                <div class="clear"></div>
 
-  </article>
-</section>
-        <section id="extras" class="body">
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
-        </footer><!-- /#contentinfo -->
-
+                <div class="info">
+                    <a href="https://SMassey25.github.io/Understanding_Data/blog_1.html">posted at 04:48</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="https://SMassey25.github.io/Understanding_Data/tag/python.html" class="tags">python</a>
+                </div>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
 </body>
 </html>

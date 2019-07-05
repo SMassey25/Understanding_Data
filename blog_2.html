@@ -2,36 +2,44 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Classification Metrics II - F1 Score</title>
-        <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/main.css" />
-        <link href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Understanding_Data Atom Feed" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Understanding_Data | Classification Metrics II - F1 Score</title>
+    <link rel="shortcut icon" type="image/png" href="https://SMassey25.github.io/Understanding_Data/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://SMassey25.github.io/Understanding_Data/favicon.ico">
+    <link href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Understanding_Data Full Atom Feed" />
+    <link href="https://SMassey25.github.io/Understanding_Data/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="Understanding_Data Categories Atom Feed" />
+    <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/print.css" type="text/css" media="print" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="" />
+    <meta name="author" content="Sara Massey" />
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <meta name="keywords" content="python" />
 </head>
-
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://SMassey25.github.io/Understanding_Data/">Understanding_Data </a></h1>
-                <nav><ul>
-                    <li class="active"><a href="https://SMassey25.github.io/Understanding_Data/category/misc.html">misc</a></li>
-                </ul>
-                </nav>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
+<body>
     <header>
-      <h1 class="entry-title">
-        <a href="https://SMassey25.github.io/Understanding_Data/blog_2.html" rel="bookmark"
-           title="Permalink to Classification Metrics II - F1 Score">Classification Metrics II - F1 Score</a></h1>
+        <nav>
+            <ul>
+                <li><a href="https://SMassey25.github.io/Understanding_Data/">Home</a></li>
+            </ul>
+        </nav>
+        <div class="header_box">
+            <h1><a href="https://SMassey25.github.io/Understanding_Data/">Understanding_Data</a></h1>
+        </div>
     </header>
+    <div id="wrapper">
+        <div id="content">            <h4 class="date">Jul 05, 2019</h4>
 
-    <div class="entry-content">
-<footer class="post-info">
-        <span>Fri 05 July 2019</span>
-<span>| tags: <a href="https://SMassey25.github.io/Understanding_Data/tag/python.html">python</a></span>
-</footer><!-- /.post-info -->      <p>Classification problems predict discrete values. In this post, we will be analyzing a classification metrics - F1 score, that uses harmonic mean as it's backbone. Before we start reading, please make sure that you understand terms like, False Positive, True Negative... Recall and Precision. If you need a refresher, check out my <a href="https://smassey25.github.io/Understanding_Data/blog_2_prerequisites.html">previous post.</a>
+            <article class="post">
+                <h2 class="title">
+                    <a href="https://SMassey25.github.io/Understanding_Data/blog_2.html" rel="bookmark" title="Permanent Link to &quot;Classification Metrics II - F1 Score&quot;">Classification Metrics II - F1 Score</a>
+                </h2>
+
+                
+                
+
+                <p>Classification problems predict discrete values. In this post, we will be analyzing a classification metrics - F1 score, that uses harmonic mean as it's backbone. Before we start reading, please make sure that you understand terms like, False Positive, True Negative... Recall and Precision. If you need a refresher, check out my <a href="https://smassey25.github.io/Understanding_Data/blog_2_prerequisites.html">previous post.</a>
 And if you do understand, then keep reading.  </p>
 <h3>So Why Use F1-Score?</h3>
 <p>We don't want to implement and interpret both precision(P) and recall(R) on our classification models. F1 sort of represents precision and recall. One would think, that taking mean of the two classification metrics would solve our problem. Let's go through an example together and then we can re-visit this questions again.</p>
@@ -109,23 +117,25 @@ big outliers. The formula of F1 score in terms of precision and recall is as fol
 
 <p>Hmm, not the best F1-score but I will surely update this post once I find a good dataset to show you the F1-score. I tried explaining all the terms that could help you understand F1 score, starting from confusion matrix to precision and recall. Let me know if you any following questions.</p>
 <p>Note: I am using the same dataset I used in my pervious blog about <a href="https://smassey25.github.io/Understanding_Data/blog_2_prerequisites.html">classification metrics</a>.</p>
-    </div><!-- /.entry-content -->
+                <div class="clear"></div>
 
-  </article>
-</section>
-        <section id="extras" class="body">
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
-        </footer><!-- /#contentinfo -->
-
+                <div class="info">
+                    <a href="https://SMassey25.github.io/Understanding_Data/blog_2.html">posted at 09:16</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="https://SMassey25.github.io/Understanding_Data/tag/python.html" class="tags">python</a>
+                </div>
+            </article>
+            <div class="clear"></div>
+            <footer>
+                <p>
+                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
+                &middot;
+                Powered by <a href="http://getpelican.com">Pelican</a>
+                &middot;
+                <a href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" rel="alternate">Atom Feed</a>
+            </footer>
+        </div>
+        <div class="clear"></div>
+    </div>
 </body>
 </html>
