@@ -1,45 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Understanding_Data | Overfitting vs Underfitting - Looking for the sweet spot</title>
-    <link rel="shortcut icon" type="image/png" href="https://SMassey25.github.io/Understanding_Data/favicon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="https://SMassey25.github.io/Understanding_Data/favicon.ico">
-    <link href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Understanding_Data Full Atom Feed" />
-    <link href="https://SMassey25.github.io/Understanding_Data/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="Understanding_Data Categories Atom Feed" />
-    <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/screen.css" type="text/css" />
-    <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/print.css" type="text/css" media="print" />
-    <meta name="generator" content="Pelican" />
-    <meta name="description" content="" />
-    <meta name="author" content="Sara Massey" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>Overfitting vs Underfitting - Looking for the sweet spot - Understanding_Data</title>
+    <meta charset="utf-8" />
+    <link href="http://fonts.googleapis.com/css?family=Arimo:400,700|Inika" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="https://SMassey25.github.io/Understanding_Data/theme/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="https://SMassey25.github.io/Understanding_Data/theme/pastie.css" />
+    <link href="https://SMassey25.github.io/Understanding_Data/" type="application/atom+xml" rel="alternate" title="Understanding_Data Atom Feed" />
 
-    <meta name="keywords" content="python" />
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="https://SMassey25.github.io/Understanding_Data/">Home</a></li>
-            </ul>
-        </nav>
-        <div class="header_box">
-            <h1><a href="https://SMassey25.github.io/Understanding_Data/">Understanding_Data</a></h1>
-        </div>
-    </header>
-    <div id="wrapper">
-        <div id="content">            <h4 class="date">Jun 13, 2019</h4>
 
-            <article class="post">
-                <h2 class="title">
-                    <a href="https://SMassey25.github.io/Understanding_Data/blog_1_prerequisites.html" rel="bookmark" title="Permanent Link to &quot;Overfitting vs Underfitting - Looking for the sweet spot&quot;">Overfitting vs Underfitting - Looking for the sweet spot</a>
-                </h2>
+  </head>
 
-                
-                
-
-                <p>Generalization is a machine learning concept that evaluates how a model performs on testing or unseen data. A model could score 99% accuracy on a training model, however if it cannot replicate the accuracy results then the model is useless. Our model could either underfit or overfit in these situations, all to say that they both fail to predict patterns in the data.
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="span8">
+<div id="content">
+    <div class="header">
+        <h1>Overfitting vs Underfitting - Looking for the sweet spot</h1>
+    </div>
+    <p class="meta"><small><span><a href="https://SMassey25.github.io/Understanding_Data/author/sara-massey/">Sara Massey</a> - </span><span>Thu 13 June 2019</span> - <span class="tags"><a href="/tag/python/">python</a></span></small></p>
+        <div class="entry-content">
+        <p>Generalization is a machine learning concept that evaluates how a model performs on testing or unseen data. A model could score 99% accuracy on a training model, however if it cannot replicate the accuracy results then the model is useless. Our model could either underfit or overfit in these situations, all to say that they both fail to predict patterns in the data.
 Before we explain underfit and overfit, let's understand bias and variance.
 <img alt="bias_variance.jpg" src="images\bias_variance.JPG"></p>
 <p>Bias and variance are two predictive models that can differentiate a good model from a not so good model.</p>
@@ -55,25 +38,32 @@ Before we explain underfit and overfit, let's understand bias and variance.
 <p>On the other hand, overfitting is a result of a few too many independent variable. Instead of learning the pattern, the model would just memorize the points. It would even consider the noisy points or outliers to find a pattern. Even though the training model would give exceptional predictions, the results would not be replicated on the test dataset. SO if you see 99% accuracy on your training dataset, be suspicious. This complex model would have high variance and low bias.
 <img alt="bias_variance.jpg" src="images\high_variance.jpg"></p>
 <p>There are multiple techniques that are used to overcome both underfitting and overfitting however that is a post for another day.  </p>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="https://SMassey25.github.io/Understanding_Data/blog_1_prerequisites.html">posted at 06:48</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="https://SMassey25.github.io/Understanding_Data/tag/python.html" class="tags">python</a>
-                </div>
-            </article>
-            <div class="clear"></div>
-            <footer>
-                <p>
-                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
-                &middot;
-                Powered by <a href="http://getpelican.com">Pelican</a>
-                &middot;
-                <a href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" rel="alternate">Atom Feed</a>
-            </footer>
+        </div><!-- /.entry-content -->
+</div>
         </div>
-        <div class="clear"></div>
+        <div class="span3 offset1">
+          <div class="well">
+            <ul class="nav nav-list">
+              <li class="nav-header">Blog</li>
+              <li ><a href="https://SMassey25.github.io/Understanding_Data">Index</a></li>
+              <li ><a href="https://SMassey25.github.io/Understanding_Data/tags/">Tags</a></li>
+              <li ><a href="https://SMassey25.github.io/Understanding_Data/archives/">Archiv</a></li>
+            </ul>
+          </div><!-- /#menu -->
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="span12">
+          <div id="about">
+            <p>Proudly powered by <a href="http://twitter.github.com/bootstrap/">bootstrap</a>, <a href="http://docs.notmyidea.org/alexis/pelican/">pelican</a>, <a href="http://python.org">python</a> and <a href="http://www.julo.ch/about/">Alex</a>!</p>
+          </div><!-- /#about -->
+        </div><!-- /#contentinfo -->
+      </div>
     </div>
-</body>
+
+
+  </body>
 </html>

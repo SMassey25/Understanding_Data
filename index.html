@@ -1,603 +1,140 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>Blog - Understanding_Data</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Understanding_Data</title>
-    <link rel="shortcut icon" type="image/png" href="https://SMassey25.github.io/Understanding_Data/favicon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="https://SMassey25.github.io/Understanding_Data/favicon.ico">
-    <link href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Understanding_Data Full Atom Feed" />
-    <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/screen.css" type="text/css" />
-    <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/print.css" type="text/css" media="print" />
-    <meta name="generator" content="Pelican" />
-    <meta name="description" content="" />
-    <meta name="author" content="Sara Massey" />
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li class="selected"><a href="https://SMassey25.github.io/Understanding_Data/">Home</a></li>
-            </ul>
-        </nav>
-        <div class="header_box">
-            <h1><a href="https://SMassey25.github.io/Understanding_Data/">Understanding_Data</a></h1>
-        </div>
-    </header>
-    <div id="wrapper">
-        <div id="content">            <h4 class="date">Jul 05, 2019</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="https://SMassey25.github.io/Understanding_Data/blog_2.html" rel="bookmark" title="Permanent Link to &quot;Classification Metrics II - F1 Score&quot;">Classification Metrics II - F1 Score</a>
-                </h2>
-
-                
-                
-
-                <p>Classification problems predict discrete values. In this post, we will be analyzing a classification metrics - F1 score, that uses harmonic mean as it's backbone. Before we start reading, please make sure that you understand terms like, False Positive, True Negative... Recall and Precision. If you need a refresher, check out my <a href="https://smassey25.github.io/Understanding_Data/blog_2_prerequisites.html">previous post.</a>
-And if you do understand, then keep reading.  </p>
-<h3>So Why Use F1-Score?</h3>
-<p>We don't want to implement and interpret both precision(P) and recall(R) on our classification models. F1 sort of represents precision and recall. One would think, that taking mean of the two classification metrics would solve our problem. Let's go through an example together and then we can re-visit this questions again.</p>
-<p>Let's us analyze transaction dataset. We have 100 transactions and out of these we have 5 fraud cases. Our values would be as following:
-  1. TP = 5
-  2. FP = 95
-  3. TN = 0
-  4. FN = 0</p>
-<p>Based on the above numbers, our precision and recall are following:</p>
-<p><img alt="blog_2_precision_recall.JPG" src="images\blog_2_precision_recall.JPG"></p>
-<p>Now if we take mean of both calculations, we get a model that did  52.5% on both precision and recall. Hopefully, you can see how this is not so good.</p>
-<p>Let's us take a different approach and instead of using mean, we can try harmonic mean. Harmonic mean can be defined as the "reciprocal of the arithmetic mean of the reciprocal". Another way to look at harmonic mean would mean when X and Y are on opposite ends, i.e. 5 and 100. Mean gives a value that gives more weight to the bigger value, however in harmonic mean we get a value that gives more weight to the smaller value. Let me show you so math and hopefully that gives a more clear picture.</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Harmonic mean of: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="mi">37</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">hmean</span><span class="p">([</span><span class="mi">37</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">()</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Adding a large number(1000)&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Harmonic mean of: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">hmean</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">()</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Regular Mean of: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">()</span>
-<span class="k">print</span><span class="p">()</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Adding a small number(12)&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Harmonic mean of: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">hmean</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">()</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Regular Mean of: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">]))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">36</span><span class="p">]))</span>
-</pre></div>
+    <link href="http://fonts.googleapis.com/css?family=Arimo:400,700|Inika" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="https://SMassey25.github.io/Understanding_Data/theme/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="https://SMassey25.github.io/Understanding_Data/theme/pastie.css" />
+    <link href="https://SMassey25.github.io/Understanding_Data/" type="application/atom+xml" rel="alternate" title="Understanding_Data Atom Feed" />
 
 
-<div class="highlight"><pre><span></span>Harmonic mean of: [37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
-34.300503611618986
+  </head>
 
-Adding a large number(1000)
-Harmonic mean of: [1000, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
-36.66071950232791
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="span8">
+<div id="content">
+<h1>Blog</h1>
 
-Regular Mean of: [1000, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
-99.33333333333333
-</pre></div>
-
-
-<p>​  <br>
-    Adding a small number(12)
-    Harmonic mean of: [12, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
-    30.51940326329871</p>
-<div class="highlight"><pre><span></span>Regular Mean of: [12, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
-33.46666666666667
-</pre></div>
-
-
-<p>You can see that in the above three examples, the harmonic mean stayed in the range of 30 even though we added a 1000 in the range. However, mean got inflated to 99.33.
-In conclusion, harmonic mean gives out a weighted average that favors smaller numbers and ignore really
-big outliers. The formula of F1 score in terms of precision and recall is as follows:</p>
-<p><img alt="blog_2_f1.JPG" src="images\blog_2_f1.JPG"></p>
-<p>Hopefully, now you see how harmonic mean is better than regular mean. Let us implement F1-score then.</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
-<span class="n">f1s</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;micro&#39;</span><span class="p">)</span>
-<span class="n">f1s</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>0.9842442146725751
-</pre></div>
-
-
-<p>Hmm, not the best F1-score but I will surely update this post once I find a good dataset to show you the F1-score. I tried explaining all the terms that could help you understand F1 score, starting from confusion matrix to precision and recall. Let me know if you any following questions.</p>
-<p>Note: I am using the same dataset I used in my pervious blog about <a href="https://smassey25.github.io/Understanding_Data/blog_2_prerequisites.html">classification metrics</a>.</p>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="https://SMassey25.github.io/Understanding_Data/blog_2.html">posted at 09:16</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="https://SMassey25.github.io/Understanding_Data/tag/python.html" class="tags">python</a>
+<ul class="unstyled">
+        <li>
+            <div>
+                <div class="header">
+                    <h2>Classification Metrics II - F1 Score</h2>
                 </div>
-            </article>            <h4 class="date">Jul 05, 2019</h4>
+                <p class="meta"><small><span><a href="https://SMassey25.github.io/Understanding_Data/author/sara-massey/">Sara Massey</a> - </span><span>Fri 05 July 2019</span> - <span class="tags"><a href="/tag/python/">python</a></span></small></p>
+                <div class="entry-content">
+                    <p>Classification problems predict discrete values. In this post, we will be analyzing a classification metrics - F1 score, that uses harmonic mean as it's backbone. Before we start reading, please make sure that you understand terms like, False Positive, True Negative... Recall and Precision. If you need a refresher, check out …</p>
+                </div><!-- /.entry-content -->
+                <div class="row">
+                    <div class="span4">
+                    </div>
+                    <div class="span1 offset3">
+                        <a class="btn btn-small" href="https://SMassey25.github.io/Understanding_Data/blog_2.html" rel="bookmark" title="Permalink to Classification Metrics II - F1 Score">Mehr</a>
+                    </div>
+                </div>
+            </div>
+        </li>
 
-            <article class="post">
-                <h2 class="title">
-                    <a href="https://SMassey25.github.io/Understanding_Data/blog_2_prerequisites.html" rel="bookmark" title="Permanent Link to &quot;Classification Metrics I - Accuracy, Precision, Recall&quot;">Classification Metrics I - Accuracy, Precision, Recall</a>
-                </h2>
-
-                
-                
-
-                <p><em>Numbers have an important story to tell. They rely on you to give them a voice</em> - <strong>Alex Peiniger</strong></p>
+        <li><hr /></li>
+        <li>
+            <div>
+                <div class="header">
+                    <h2>Classification Metrics I - Accuracy, Precision, Recall</h2>
+                </div>
+                <p class="meta"><small><span><a href="https://SMassey25.github.io/Understanding_Data/author/sara-massey/">Sara Massey</a> - </span><span>Fri 05 July 2019</span> - <span class="tags"><a href="/tag/python/">python</a></span></small></p>
+                <div class="entry-content">
+                    <p><em>Numbers have an important story to tell. They rely on you to give them a voice</em> - <strong>Alex Peiniger</strong></p>
 <p>Once you are done with your EDA and implemented a model, we need to evaluate how well a model has performed and this is done using multiple evaluation metrics.
-In this post, I will briefly explain how classification problems are different than regression problems. I will load the <a href="https://www.kaggle.com/uciml/mushroom-classification">Mushroom Classification</a> dataset, implement and explain multiple classification metrics such as, accuracy, precision and recall(sensitivity).</p>
-<p><img alt="blog2_number.jpg" src="images\blog2_number.jpg"></p>
-<h3>Regression VS Classification</h3>
-<p>Machine Learning consists of many techniques to answer certain types of questions. These algorithms can be divided into the type of outputs they produce, that is, either continuous or discreate.</p>
-<p>Regression models are used to predict continuous values. That is, the outputs of a regression models are not confined to a set of bins or labels. Predicting accumulated wealth based on age and education level.</p>
-<p>On the other hand, classification models predict discrete values. That is, the predicted value is one of the possible outcomes in  the finite set. A classification regression that predicts one of the two values is called binary classification. Predicting <a href="https://www.youtube.com/watch?v=pqTntG1RXSY">hotdog/not hotdog</a> is an example of binary classification. In contrast, predicting one of multiple possible outcomes is called a multi-label classification. Customer segmentation is a good example of multi-label classification problem.</p>
-<p><img alt="blog2_RegVClass.jpeg" src="images\blog2_RegVClass.jpeg"></p>
-<p>Now that we understand the difference between regression and classification problems, let's load the mushroom classification dataset, use mapper to convert strings into numbers for the models, fit the easiest classification model aka, decision trees and finally score it on different metrics.
-NOTE: Mushroom dataset is binary classification problem as we have to predict whether the mushroom is poisonous or edible.
-Let's get started!</p>
-<p><em>Reading the Dataset below</em></p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;mushrooms.csv&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
+In this post …</p>
+                </div><!-- /.entry-content -->
+                <div class="row">
+                    <div class="span4">
+                    </div>
+                    <div class="span1 offset3">
+                        <a class="btn btn-small" href="https://SMassey25.github.io/Understanding_Data/blog_2_prerequisites.html" rel="bookmark" title="Permalink to Classification Metrics I - Accuracy, Precision, Recall">Mehr</a>
+                    </div>
+                </div>
+            </div>
+        </li>
 
+        <li><hr /></li>
+        <li>
+            <div>
+                <div class="header">
+                    <h2>Overfitting vs Underfitting - Looking for the sweet spot</h2>
+                </div>
+                <p class="meta"><small><span><a href="https://SMassey25.github.io/Understanding_Data/author/sara-massey/">Sara Massey</a> - </span><span>Thu 13 June 2019</span> - <span class="tags"><a href="/tag/python/">python</a></span></small></p>
+                <div class="entry-content">
+                    <p>Generalization is a machine learning concept that evaluates how a model performs on testing or unseen data. A model could score 99% accuracy on a training model, however if it cannot replicate the accuracy results then the model is useless. Our model could either underfit or overfit in these situations …</p>
+                </div><!-- /.entry-content -->
+                <div class="row">
+                    <div class="span4">
+                    </div>
+                    <div class="span1 offset3">
+                        <a class="btn btn-small" href="https://SMassey25.github.io/Understanding_Data/blog_1_prerequisites.html" rel="bookmark" title="Permalink to Overfitting vs Underfitting - Looking for the sweet spot">Mehr</a>
+                    </div>
+                </div>
+            </div>
+        </li>
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+        <li><hr /></li>
+        <li>
+            <div>
+                <div class="header">
+                    <h2>Getting Started with Linear Regression</h2>
+                </div>
+                <p class="meta"><small><span><a href="https://SMassey25.github.io/Understanding_Data/author/sara-massey/">Sara Massey</a> - </span><span>Thu 13 June 2019</span> - <span class="tags"><a href="/tag/python/">python</a></span></small></p>
+                <div class="entry-content">
+                    <p>On every site you go regarding data science workflow, it starts with defining the problem, gathering/cleaning and exploring the data. However, what to do after you are done with exploratory data analysis. The next two steps includes building a model and evaluating your model to answer the problem.</p>
+<p>In …</p>
+                </div><!-- /.entry-content -->
+                <div class="row">
+                    <div class="span4">
+                    </div>
+                    <div class="span1 offset3">
+                        <a class="btn btn-small" href="https://SMassey25.github.io/Understanding_Data/blog_1.html" rel="bookmark" title="Permalink to Getting Started with Linear Regression">Mehr</a>
+                    </div>
+                </div>
+            </div>
+        </li>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+        <li><hr /></li>
+</ul><!-- /#posts-list -->
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe" style="width:100%">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>class</th>
-      <th>cap-shape</th>
-      <th>cap-surface</th>
-      <th>cap-color</th>
-      <th>bruises</th>
-      <th>odor</th>
-      <th>gill-attachment</th>
-      <th>gill-spacing</th>
-      <th>gill-size</th>
-      <th>gill-color</th>
-      <th>...</th>
-      <th>stalk-surface-below-ring</th>
-      <th>stalk-color-above-ring</th>
-      <th>stalk-color-below-ring</th>
-      <th>veil-type</th>
-      <th>veil-color</th>
-      <th>ring-number</th>
-      <th>ring-type</th>
-      <th>spore-print-color</th>
-      <th>population</th>
-      <th>habitat</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>p</td>
-      <td>x</td>
-      <td>s</td>
-      <td>n</td>
-      <td>t</td>
-      <td>p</td>
-      <td>f</td>
-      <td>c</td>
-      <td>n</td>
-      <td>k</td>
-      <td>...</td>
-      <td>s</td>
-      <td>w</td>
-      <td>w</td>
-      <td>p</td>
-      <td>w</td>
-      <td>o</td>
-      <td>p</td>
-      <td>k</td>
-      <td>s</td>
-      <td>u</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>e</td>
-      <td>x</td>
-      <td>s</td>
-      <td>y</td>
-      <td>t</td>
-      <td>a</td>
-      <td>f</td>
-      <td>c</td>
-      <td>b</td>
-      <td>k</td>
-      <td>...</td>
-      <td>s</td>
-      <td>w</td>
-      <td>w</td>
-      <td>p</td>
-      <td>w</td>
-      <td>o</td>
-      <td>p</td>
-      <td>n</td>
-      <td>n</td>
-      <td>g</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>e</td>
-      <td>b</td>
-      <td>s</td>
-      <td>w</td>
-      <td>t</td>
-      <td>l</td>
-      <td>f</td>
-      <td>c</td>
-      <td>b</td>
-      <td>n</td>
-      <td>...</td>
-      <td>s</td>
-      <td>w</td>
-      <td>w</td>
-      <td>p</td>
-      <td>w</td>
-      <td>o</td>
-      <td>p</td>
-      <td>n</td>
-      <td>n</td>
-      <td>m</td>
-    </tr>
-  </tbody>
-</table>
-<p>3 rows × 23 columns</p>
-
+<div class="pagination pagination-centered">
+    <ul>
+        <li class="active"><a href="#">1</a></li>
+    </ul>
 </div>
-
-<p><em>Train_Test_Split the data as it is good practice and one should do it, if possible.</em></p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;class&#39;</span><span class="p">,</span><span class="s1">&#39;cap-color&#39;</span><span class="p">,</span><span class="s1">&#39;bruises&#39;</span><span class="p">,</span><span class="s1">&#39;odor&#39;</span><span class="p">,</span><span class="s1">&#39;ring-number&#39;</span><span class="p">,</span><span class="s1">&#39;gill-attachment&#39;</span><span class="p">,</span><span class="s1">&#39;gill-spacing&#39;</span><span class="p">,</span><span class="s1">&#39;gill-size&#39;</span><span class="p">,</span><span class="s1">&#39;gill-color&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
-</pre></div>
-
-
-<p>In the following block of code, I have used <a href="https://github.com/scikit-learn-contrib/sklearn-pandas/blob/master/sklearn_pandas/dataframe_mapper.py">data frame mapper</a>, <a href="https://github.com/scikit-learn-contrib/sklearn-pandas/blob/master/sklearn_pandas/categorical_imputer.py">categorical imputer</a>, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelBinarizer.html">label binarizer</a> and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html">pipeline</a> to transform and fit the data to evaluate the model on different classification metrics. The main point of this post is to explain the classification metrics rather than transforming the data, therefore, you can skip the following piece of code.</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn_pandas</span> <span class="kn">import</span> <span class="n">DataFrameMapper</span><span class="p">,</span> <span class="n">CategoricalImputer</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelBinarizer</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-
-
-<span class="c1">#Scalling/Transforming our Features</span>
-<span class="n">mapper</span> <span class="o">=</span> <span class="n">DataFrameMapper</span><span class="p">([</span>
-<span class="p">(</span><span class="s1">&#39;cap-shape&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;cap-surface&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;stalk-shape&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;stalk-root&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;stalk-surface-above-ring&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;stalk-surface-below-ring&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;stalk-color-above-ring&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;stalk-color-below-ring&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;veil-type&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;veil-color&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;ring-type&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;spore-print-color&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;population&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="p">(</span><span class="s1">&#39;habitat&#39;</span><span class="p">,[</span><span class="n">CategoricalImputer</span><span class="p">(),</span><span class="n">LabelBinarizer</span><span class="p">()]),</span>
-<span class="c1">#(&#39;cap-color&#39;,[CategoricalImputer(),LabelBinarizer()]),</span>
-<span class="c1">#(&#39;bruises&#39;,[CategoricalImputer(),LabelBinarizer()]),</span>
-<span class="c1">#(&#39;odor&#39;,[CategoricalImputer(),LabelBinarizer()]),</span>
-<span class="c1">#(&#39;gill-attachment&#39;,[CategoricalImputer(),LabelBinarizer()]),</span>
-<span class="c1">#(&#39;gill-spacing&#39;,[CategoricalImputer(),LabelBinarizer()]),</span>
-<span class="c1">#(&#39;gill-size&#39;,[CategoricalImputer(),LabelBinarizer()]),</span>
-<span class="c1">#(&#39;gill-color&#39;,[CategoricalImputer(),LabelBinarizer()]),</span>
-<span class="c1">#(&#39;ring-number&#39;,[CategoricalImputer(),LabelBinarizer()]),</span>
-<span class="p">],</span><span class="n">df_out</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
-
-<span class="c1">#Pipeline to instantiate the mapper and decision tree classifier.</span>
-<span class="n">pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
-    <span class="n">mapper</span><span class="p">,</span>
-    <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">,</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-<span class="p">)</span>
-<span class="c1">#Fitting our models</span>
-<span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
-<span class="c1">#Creating predictions</span>
-<span class="n">predicted</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">);</span>
-</pre></div>
-
-
-<p>Just to sum up, I implemented logistic regression in the above code and predicted values for my X_test dataset. I dropped some columns from my X_train and X_test just so that I can get more
-discrepancy.</p>
-<p><img alt="blog2_final.png" src="images\blog2_final.png"></p>
-<h3>Confusion Matrix</h3>
-<p>Confusion Matrix is not an evaluation model, however it can be used to find correctness and accuracy of a model. In addition,  most of the classification metrics are based on the terms and numbers evaluated by it. Therefore, I will implement confusion matrix and then <strong>try</strong> to explain the terms associated with it.</p>
-<p><em>Note: For this example, 1 represents my positive condition that is, that the mushroom is poisonous and 0 represents my negative condition that is, the mushroom is edible. Seems weird but think in terms of disease</em></p>
-<div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">predicted</span><span class="p">)</span>
-<span class="n">cm_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;predicted poisonous&#39;</span><span class="p">,</span> <span class="s1">&#39;predicted edible&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;actual poisonous&#39;</span><span class="p">,</span> <span class="s1">&#39;actual edible&#39;</span><span class="p">])</span>
-<span class="n">cm_df</span>
-</pre></div>
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>predicted poisonous</th>
-      <th>predicted edible</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>actual poisonous</th>
-      <td>1013</td>
-      <td>27</td>
-    </tr>
-    <tr>
-      <th>actual edible</th>
-      <td>5</td>
-      <td>986</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-<p>To begin with, the baseline to read a confusion matrix starts by reading the diagonal from top-left to bottom-right. These two values,1013 and 986, in the above data frame are the correctly predicted values.</p>
-<p><strong><em>True Positive(TP)</em></strong> values are the cases when the positive condition is predicted correctly. We could also say that the model predicted 1 and the actual value was also 1. In this example, 1013 is the True Positive value, representing the correctly predicted poisonous mushroom.</p>
-<p><strong><em>True Negatives(TN)</em></strong> values are the cases when negative condition is correctly predicted. In other words, the model predicted 0 and the actual value was also 0. In this example 986 is the True Negative value, as it represents correctly edible poisonous mushrooms.</p>
-<p>Now that we analyzed diagonal from top-left to bottom-right, let's look at the other diagonal. The other two values, that is 27 and 5 are called False Positive and False Negative, respectively. These terms are probably what adds confusion in the confusion matrix, so let's go.</p>
-<p><strong><em>False Positive(FP)</em></strong> values are the cases when positive condition is NOT predicted correctly. That is, the model predicted 0 and the actual value was 1. In our example, 27 is the False Positive value, representing poisonous mushrooms that were predicted to be edible.</p>
-<p><strong><em>False Negatives(TN)</em></strong> values are the cases when negative condition is NOT correctly predicted. In other words, the model predicted 1 and the actual value was also 0. In this example, 5 is the False Negative value, as it represents edible mushrooms that were deemed poisonous.</p>
-<p><img alt="blog2_confusionMatrix.png" src="images\blog2_confusionMatrix.png"></p>
-<p>Now that we sort-off understand the four terms, we can use them create multiple classification metrics such as accuracy, precision, recall and f1-score.</p>
-<h3>Accuracy</h3>
-<p>To begin with, accuracy accounts for the overall performance of the model. We could also say that it is a ratio of correctly predicted observations to the total observations. The formula for accuracy is following:</p>
-<p><img alt="blog2_accuracy.jpg" src="images\blog2_accuracy.JPG"></p>
-<p>Intuitively, accuracy seems to be logical and one would think about just using this as a evaluation tool of the model. However, accuracy score falls short when there are unbalanced classes. In other words, accuracy is not reliable when there are more TP over TN or vice versa. For instance, if you have 100 credit transactions and out of those you have 5 credit fraud cases. If our model only predicts no fraud cases, our model would be 95% accurate. Therefore, accuracy should not be used when the target variables are not balanced. We calculated using the formula, now let us see how was can implement accuracy_score and get similar if not exact same score:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
-<span class="n">ac</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">predicted</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
-<span class="n">ac</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>0.9842442146725751
-</pre></div>
-
-
-<h3>Precision</h3>
-<p>Precision on the other hand, only calculates how accurate the predictions regarding the positive case are(poisonous mushrooms are positive case in our example).Precision is calculated by taking the ratio of correctly predicted positive observations to the total predicted positive observations. The formula for precision is following:</p>
-<p><img alt="blog_2_precision.jpg" src="images\blog_2_precision.JPG"></p>
-<p>All in all, precision gives us the number in terms of our positive case. In the mushroom example, we are worried about the FP as marking an poisonous mushroom edible is harmful or deadly. Let us implement precision using sklearn.</p>
-<p>Remember: High precision relates to the low false positive rate.</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span>
-<span class="n">pc</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">predicted</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
-<span class="n">pc</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>0.9844797253017756
-</pre></div>
-
-
-<h3>Recall</h3>
-<p>Recall also know as sensitivity is a score for the coverage of actual positive sample. Recall is calculated by taking the ratio of correctly predicted positive cases to the all cases are in actual class. Let's look at the formula as it helped me understand the concept so it might help you too!</p>
-<p><img alt="blog2_recall.jpg" src="images\blog2_recall.JPG"></p>
-<p>For our example, recall score would judge how well our model predicted positive cases when the actual case was positive. There is a trade-off between precision and recall score. Which evaluation metrics you use, depends on each problem.</p>
-<p>Note: Specificity is another classification metrics that is the opposite of Recall.</p>
-<p>Let's us implement recall from sklearn.</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">recall_score</span>
-<span class="n">rc</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
-<span class="n">rc</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>0.9842442146725751
-</pre></div>
-
-
-<p>All in all, all these terms can be used to get understand another classification metrics, F1-Score. But I guess the blog is already too long, so let's keep that for another day.</p>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="https://SMassey25.github.io/Understanding_Data/blog_2_prerequisites.html">posted at 09:16</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="https://SMassey25.github.io/Understanding_Data/tag/python.html" class="tags">python</a>
-                </div>
-            </article>            <h4 class="date">Jun 13, 2019</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="https://SMassey25.github.io/Understanding_Data/blog_1_prerequisites.html" rel="bookmark" title="Permanent Link to &quot;Overfitting vs Underfitting - Looking for the sweet spot&quot;">Overfitting vs Underfitting - Looking for the sweet spot</a>
-                </h2>
-
-                
-                
-
-                <p>Generalization is a machine learning concept that evaluates how a model performs on testing or unseen data. A model could score 99% accuracy on a training model, however if it cannot replicate the accuracy results then the model is useless. Our model could either underfit or overfit in these situations, all to say that they both fail to predict patterns in the data.
-Before we explain underfit and overfit, let's understand bias and variance.
-<img alt="bias_variance.jpg" src="images\bias_variance.JPG"></p>
-<p>Bias and variance are two predictive models that can differentiate a good model from a not so good model.</p>
-<p>According to <a href="https://elitedatascience.com/bias-variance-tradeoff">EliteDataScince</a>, "Bias occurs when an algorithm has less flexibility to learn the true signal from a dataset." A model with high bias will be consistent with it's results however, it would be inaccurate. A good way to remember bias is to think about 'bias towards people'. If you are biased towards someone and would likely make wrong assumptions about them.</p>
-<p>On the other hand, EliteDataScience explained variance as "algorithm's sensitivity to specific sets of training data". Such models are usually complex models that try to find patterns using variables that should have no affect. These models are accurate on average however, they are in consistent with their results. For instance, using your name to find the brand of toothpaste would be an example of high variance.</p>
-<p><img alt="overfit_underfit.jpg" src="images\variance_or_bias.jpg"></p>
-<p>We should also understand that there is a trade off between the two. A high bias model, would be low variance and vice a versa. So as a data scientist you should be looking for a sweet spot.</p>
-<p>So you might be wondering where does underfitting and overfitting falls?</p>
-<p><img alt="overfit_underfit.jpg" src="images\overfit_underfit_2.jpg"></p>
-<h2>Underfitting</h2>
-<p>Underfitting occurs when a model does not fit the training data set and therefore cannot be generalized on the new dataset. This could be result of a simple model, that is, there are not enough independent variables to predict the dependent variable. It could also occur when we use linear regression on non-linear dataset. If we have to explain underfitting model in terms of bias/variance, it would be high variance and low bias.</p>
-<h2>Overfitting</h2>
-<p>On the other hand, overfitting is a result of a few too many independent variable. Instead of learning the pattern, the model would just memorize the points. It would even consider the noisy points or outliers to find a pattern. Even though the training model would give exceptional predictions, the results would not be replicated on the test dataset. SO if you see 99% accuracy on your training dataset, be suspicious. This complex model would have high variance and low bias.
-<img alt="bias_variance.jpg" src="images\high_variance.jpg"></p>
-<p>There are multiple techniques that are used to overcome both underfitting and overfitting however that is a post for another day.  </p>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="https://SMassey25.github.io/Understanding_Data/blog_1_prerequisites.html">posted at 06:48</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="https://SMassey25.github.io/Understanding_Data/tag/python.html" class="tags">python</a>
-                </div>
-            </article>            <h4 class="date">Jun 13, 2019</h4>
-
-            <article class="post">
-                <h2 class="title">
-                    <a href="https://SMassey25.github.io/Understanding_Data/blog_1.html" rel="bookmark" title="Permanent Link to &quot;Getting Started with Linear Regression&quot;">Getting Started with Linear Regression</a>
-                </h2>
-
-                
-                
-
-                <p>On every site you go regarding data science workflow, it starts with defining the problem, gathering/cleaning and exploring the data. However, what to do after you are done with exploratory data analysis. The next two steps includes building a model and evaluating your model to answer the problem.</p>
-<p>In this post I will try to explain the first model that I implemented, Linear Regression. I will touch upon both test/train split and cross-validation to score our model as they are good habits to practice in the field of Data Science.</p>
-<p>NOTE: I  <strong><em>try</em></strong> to keep math under the hood and keep it to only programming.   </p>
-<hr>
-<p>Linear regression is a statistical model that examines relationship between a dependent variable(y variable) and independent variables(one or more variables of x).</p>
-<p>If the model is examining relationship between two variables (x and y), the model is called a Simple Linear Regression(SLR). Mathematically, SLR can be represented as <strong><em>y = b0 + b1x1</em></strong>.</p>
-<p>On the other hand, if we are examining relationship between more than two variables(y and multiple values for x - also represented as X), the model is called a Multiple Linear Regression and it is represented as <strong><em>y = b0 + b1x1 + b2x2...bnxn.</em></strong></p>
-<p>In order to understand this model, we should also understand the concept of residuals. Residuals are basically the differences between the true value of y and the predicted values of y, also known as ŷ. All in all, our goal to find a "line of the best fit" and to minimize the distance between the blue dots and the red line. In mathematical terms, we are trying to minimize mean squared error(MSE) or the sum of squares of error(SSE), also called the 'residual sum of square'.</p>
-<p><img alt="residual_sum_of_sq_graph" src="images\r^2.JPG"></p>
-<p>Enough with explanation. Let's load some data and get going with implementing multiple linear regression.</p>
-<div class="highlight"><pre><span></span>    <span class="c1">#Loading the data</span>
-    <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sacramento.csv&#39;</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-
-<p><img alt="above_code_output" src="images\code_1.JPG"></p>
-<p>TIP: Remember IMPORT, INSTANTIATE and FIT</p>
-<div class="highlight"><pre><span></span>    <span class="c1">#Import</span>
-    <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-    <span class="c1">#Instantiate</span>
-    <span class="n">linreg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;sq_ft&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span>
-    <span class="c1">#Fit</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">linreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-
-
-<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.score">.predict</a> uses the linear model and returns predicted values of y using X.</p>
-<div class="highlight"><pre><span></span>    <span class="n">yhat</span> <span class="o">=</span> <span class="n">linreg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</pre></div>
-
-
-<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression.score">.score</a> returns the coefficient of residual sum of squares (R^2) of the prediction. The best score is usually between 0.0 and 1.0. However, be suspicious if you get 1.0
-Also, if you get negative number that could mean that the model is arbitrarily worse.</p>
-<div class="highlight"><pre><span></span>    <span class="n">yhat</span> <span class="o">=</span> <span class="n">yhat</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">yhat</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">yhat</span><span class="p">)</span>
-</pre></div>
-
-
-<p><img alt="above_code_output" src="images\code_2.JPG">
-Here are some useful methods to get slope and intercept. Learn more about there <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">here</a>!</p>
-<div class="highlight"><pre><span></span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The slope is &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The intercept is&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">))</span>
-</pre></div>
-
-
-<p><img alt="above_code_output" src="images\code_3.JPG">
-<img alt="meme1" src="images\LR.png"></p>
-<hr>
-<h2>Train/Test Split and Cross Validation</h2>
-<p>Now that we know how to implemented linear regression, let's take a step back.</p>
-<p>For obvious reasons, using the entire data set to predict the model is not a good idea, as we cannot determine if our model is overfitting or underfitting.
-Not sure what is overfitting and underfitting? Check my <a href="https://smassey25.github.io/Understanding_Data/blog_1_prerequisites.html">post</a>.</p>
-<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">Train/Test Split</a>, splits the data into training dataset and a test dataset. We then use the training dataset to train the model and testing dataset to test or evaluate the model. This ensures that our model is not making prediction regarding the values it has already 'seen'. See the following code to learn how to implement train/test split.</p>
-<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>    <span class="n">linreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-    <span class="n">linreg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-
-
-<p><img alt="above_code_output" src="images\code_4.JPG"></p>
-<div class="highlight"><pre><span></span>    <span class="n">linreg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-
-
-<p><img alt="above_code_output" src="images\code_5.JPG">
-<img alt="train_test_split" src="images\train_test_split.png"></p>
-<p>Seems good, right? But what if, the split isn't random as it seems. What if only certain types of the houses are captured in our training dataset or it only captures homes in one city. This is where <strong><em>cross validation</em></strong> comes in. There are multiple different types of cross validation, however in this post we will be focusing on K-Fold cross-validation.</p>
-<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html">K-Fold Cross-validation</a>, is very similar to train/test split, however it splits the dataset into k number of bins. For instance, if you have 150 rows in a dataset and your k = 3 bins, how many data points you have in each bin? 50 data rows in each dataset.
-So if you run 3-Fold cross validation on your data, it would pick one of the three sub-divisions as testing set and the other two as training dataset. It would fit the model on the training dataset, score the model on the testing dataset and run this process k times. You can the use the cross_val_score to get the $R^2$ score for each testing set.  </p>
-<p><img alt="train_test_split" src="images\cross_validation.png"></p>
-<p>TIP: Remember IMPORT, INSTANTIATE and FIT</p>
-<div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-    <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
-    <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
-
-    <span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span> <span class="mi">35</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-
-
-<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html">cross_val_score</a> outputs the score of each of the test. In the code below we are getting a mean to verify.</p>
-<div class="highlight"><pre><span></span>    <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kf</span><span class="p">))</span>
-</pre></div>
-
-
-<p><img alt="above_code_output" src="images\code_6.JPG"></p>
-<div class="highlight"><pre><span></span>    <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kf</span><span class="p">))</span>
-</pre></div>
-
-
-<p><img alt="above_code_output" src="images\code_7.JPG">
-When there is a significant difference between the model score for training and testing model, it means that the model is either overfit or underfit. You can "regularize" regression models to avoid overfitting, however that would be a post for another day.</p>
-                <div class="clear"></div>
-
-                <div class="info">
-                    <a href="https://SMassey25.github.io/Understanding_Data/blog_1.html">posted at 04:48</a>
-                    &nbsp;&middot;
-                    &nbsp;<a href="https://SMassey25.github.io/Understanding_Data/tag/python.html" class="tags">python</a>
-                </div>
-            </article>
-
-            <div class="clear"></div>
-            <footer>
-                <p>
-                <a href="https://github.com/jody-frankowski/blue-penguin">Blue Penguin</a> Theme
-                &middot;
-                Powered by <a href="http://getpelican.com">Pelican</a>
-                &middot;
-                <a href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" rel="alternate">Atom Feed</a>
-            </footer>
+</div><!-- /#content -->
         </div>
-        <div class="clear"></div>
+        <div class="span3 offset1">
+          <div class="well">
+            <ul class="nav nav-list">
+              <li class="nav-header">Blog</li>
+              <li class="active"><a href="https://SMassey25.github.io/Understanding_Data">Index</a></li>
+              <li ><a href="https://SMassey25.github.io/Understanding_Data/tags/">Tags</a></li>
+              <li ><a href="https://SMassey25.github.io/Understanding_Data/archives/">Archiv</a></li>
+            </ul>
+          </div><!-- /#menu -->
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="span12">
+          <div id="about">
+            <p>Proudly powered by <a href="http://twitter.github.com/bootstrap/">bootstrap</a>, <a href="http://docs.notmyidea.org/alexis/pelican/">pelican</a>, <a href="http://python.org">python</a> and <a href="http://www.julo.ch/about/">Alex</a>!</p>
+          </div><!-- /#about -->
+        </div><!-- /#contentinfo -->
+      </div>
     </div>
-</body>
+
+
+  </body>
 </html>
