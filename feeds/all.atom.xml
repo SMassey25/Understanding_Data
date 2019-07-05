@@ -356,13 +356,14 @@ Harmonic mean of: [1000, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
 
 Regular Mean of: [1000, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
 99.33333333333333
+&lt;/pre&gt;&lt;/div&gt;
 
 
-Adding a small number(12)
-Harmonic mean of: [12, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
-30.51940326329871
-
-Regular Mean of: [12, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
+&lt;p&gt;​  &lt;br&gt;
+    Adding a small number(12)
+    Harmonic mean of: [12, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
+    30.51940326329871&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Regular Mean of: [12, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
 33.46666666666667
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -383,8 +384,7 @@ $$&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Hmm, not the best F1-score but I will surely update this post once I find a good dataset to show you the F1-score. I tried explaining all the terms that could help you understand F1 score, starting from confusion matrix to precision and recall. Let me know if you any following questions. &lt;/p&gt;
-&lt;p&gt;&lt;img alt="blog2_intro.png" src="images\blog2_intro.png"&gt;&lt;/p&gt;</content><category term="python"></category></entry><entry><title>Overfitting vs Underfitting - Looking for the sweet spot</title><link href="https://SMassey25.github.io/Understanding_Data/blog_1_prerequisites.html" rel="alternate"></link><published>2019-06-13T06:48:00-04:00</published><updated>2019-06-13T06:48:00-04:00</updated><author><name>Sara Massey</name></author><id>tag:smassey25.github.io,2019-06-13:/Understanding_Data/blog_1_prerequisites.html</id><summary type="html">&lt;p&gt;Generalization is a machine learning concept that evaluates how a model performs on testing or unseen data. A model could score 99% accuracy on a training model, however if it cannot replicate the accuracy results then the model is useless. Our model could either underfit or overfit in these situations …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Generalization is a machine learning concept that evaluates how a model performs on testing or unseen data. A model could score 99% accuracy on a training model, however if it cannot replicate the accuracy results then the model is useless. Our model could either underfit or overfit in these situations, all to say that they both fail to predict patterns in the data.
+&lt;p&gt;Hmm, not the best F1-score but I will surely update this post once I find a good dataset to show you the F1-score. I tried explaining all the terms that could help you understand F1 score, starting from confusion matrix to precision and recall. Let me know if you any following questions. &lt;/p&gt;</content><category term="python"></category></entry><entry><title>Overfitting vs Underfitting - Looking for the sweet spot</title><link href="https://SMassey25.github.io/Understanding_Data/blog_1_prerequisites.html" rel="alternate"></link><published>2019-06-13T06:48:00-04:00</published><updated>2019-06-13T06:48:00-04:00</updated><author><name>Sara Massey</name></author><id>tag:smassey25.github.io,2019-06-13:/Understanding_Data/blog_1_prerequisites.html</id><summary type="html">&lt;p&gt;Generalization is a machine learning concept that evaluates how a model performs on testing or unseen data. A model could score 99% accuracy on a training model, however if it cannot replicate the accuracy results then the model is useless. Our model could either underfit or overfit in these situations …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Generalization is a machine learning concept that evaluates how a model performs on testing or unseen data. A model could score 99% accuracy on a training model, however if it cannot replicate the accuracy results then the model is useless. Our model could either underfit or overfit in these situations, all to say that they both fail to predict patterns in the data.
 Before we explain underfit and overfit, let's understand bias and variance.
 &lt;img alt="bias_variance.jpg" src="images\bias_variance.JPG"&gt;&lt;/p&gt;
 &lt;p&gt;Bias and variance are two predictive models that can differentiate a good model from a not so good model.&lt;/p&gt;
