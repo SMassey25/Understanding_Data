@@ -1,28 +1,80 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head>
-    <title>Classification Metrics II - F1 Score - Understanding_Data</title>
-    <meta charset="utf-8" />
-    <link href="http://fonts.googleapis.com/css?family=Arimo:400,700|Inika" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="https://SMassey25.github.io/Understanding_Data/theme/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="https://SMassey25.github.io/Understanding_Data/theme/pastie.css" />
-    <link href="https://SMassey25.github.io/Understanding_Data/" type="application/atom+xml" rel="alternate" title="Understanding_Data Atom Feed" />
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>Classification Metrics II - F1 Score</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Sara Massey">
+
+  <link rel="shortcut icon" href="">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="Understanding_Data">
+  <meta itemprop="image" content="">
+  <meta itemprop="description" content="">
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/pygments.css" type="text/css" />
+
+  <!-- Feed Meta Data -->
+    <link href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Understanding_Data ATOM Feed" />
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="https://SMassey25.github.io/Understanding_Data/blog_2.html">
+<meta name="twitter:title" content="Understanding_Data ~ Classification Metrics II - F1 Score">
+<meta name="twitter:description" content="<p>Classification problems predict discrete values. In this post, we will be analyzing a classification metrics - F1 score, that uses harmonic mean as it's backbone. Before we start reading, please make sure that you understand terms like, False Positive, True Negative... Recall and Precision. If you need a refresher, check out …</p>">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Understanding_Data ~ Classification Metrics II - F1 Score" />
+<meta property="og:description" content="<p>Classification problems predict discrete values. In this post, we will be analyzing a classification metrics - F1 score, that uses harmonic mean as it's backbone. Before we start reading, please make sure that you understand terms like, False Positive, True Negative... Recall and Precision. If you need a refresher, check out …</p>" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside>
+    <!--<center><a href="https://SMassey25.github.io/Understanding_Data"><img id="avatar" src=""></a></center>-->
+    <h1>Understanding_Data</h1>
+    <br>
 
 
-  </head>
+    <nav class="nav">
+      <ul class="list-bare">
+      
+         
+         
+      </ul>
+    </nav>
 
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="span8">
-<div id="content">
-    <div class="header">
-        <h1>Classification Metrics II - F1 Score</h1>
-    </div>
-    <p class="meta"><small><span><a href="https://SMassey25.github.io/Understanding_Data/author/sara-massey/">Sara Massey</a> - </span><span>Fri 05 July 2019</span> - <span class="tags"><a href="/tag/python/">python</a></span></small></p>
-        <div class="entry-content">
-        <p>Classification problems predict discrete values. In this post, we will be analyzing a classification metrics - F1 score, that uses harmonic mean as it's backbone. Before we start reading, please make sure that you understand terms like, False Positive, True Negative... Recall and Precision. If you need a refresher, check out my <a href="https://smassey25.github.io/Understanding_Data/blog_2_prerequisites.html">previous post.</a>
+    <p class="social">
+      <a href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" rel="alternate">
+        <img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/rss.png"></a>
+    </p>
+
+    <!--
+    <h2>Categories</h2>
+    <ul class="navbar">
+      <li class="active"><a href="https://SMassey25.github.io/Understanding_Data/category/misc.html">misc</a></li>
+    </ul> 
+    -->
+  </aside>
+
+  <!-- Content -->
+  <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="https://SMassey25.github.io/Understanding_Data/blog_2.html" rel="bookmark" title="Permalink to Classification Metrics II - F1 Score">Classification Metrics II - F1 Score</a></h2>
+        <div class="entry-content blog-post">
+            <p>Classification problems predict discrete values. In this post, we will be analyzing a classification metrics - F1 score, that uses harmonic mean as it's backbone. Before we start reading, please make sure that you understand terms like, False Positive, True Negative... Recall and Precision. If you need a refresher, check out my <a href="https://smassey25.github.io/Understanding_Data/blog_2_prerequisites.html">previous post.</a>
 And if you do understand, then keep reading.  </p>
 <h3>So Why Use F1-Score?</h3>
 <p>We don't want to implement and interpret both precision(P) and recall(R) on our classification models. F1 sort of represents precision and recall. One would think, that taking mean of the two classification metrics would solve our problem. Let's go through an example together and then we can re-visit this questions again.</p>
@@ -100,32 +152,42 @@ big outliers. The formula of F1 score in terms of precision and recall is as fol
 
 <p>Hmm, not the best F1-score but I will surely update this post once I find a good dataset to show you the F1-score. I tried explaining all the terms that could help you understand F1 score, starting from confusion matrix to precision and recall. Let me know if you any following questions.</p>
 <p>Note: I am using the same dataset I used in my pervious blog about <a href="https://smassey25.github.io/Understanding_Data/blog_2_prerequisites.html">classification metrics</a>.</p>
-        </div><!-- /.entry-content -->
-</div>
         </div>
-        <div class="span3 offset1">
-          <div class="well">
-            <ul class="nav nav-list">
-              <li class="nav-header">Blog</li>
-              <li ><a href="https://SMassey25.github.io/Understanding_Data">Index</a></li>
-              <li ><a href="https://SMassey25.github.io/Understanding_Data/tags/">Tags</a></li>
-              <li ><a href="https://SMassey25.github.io/Understanding_Data/archives/">Archiv</a></li>
-            </ul>
-          </div><!-- /#menu -->
+        <div class="post_list">
+            <span>By </span>
+            <a href="https://SMassey25.github.io/Understanding_Data/author/sara-massey.html">@Sara Massey</a>
+            <span> in </span>
+            <span class="post_category"><a href="https://SMassey25.github.io/Understanding_Data/category/misc.html" rel="bookmark" title="Permalink to misc">[ misc ]</a></span>
+            <span class="post_date">Fri 05 July 2019</span>
+            <div><span>Tags : </span>
+                <span><a href="https://SMassey25.github.io/Understanding_Data/tag/python.html">#python, </a></span>
+            </div>
+
+            <div class="entry-social">
+                <span class="twitter"><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=https://SMassey25.github.io/Understanding_Data/blog_2.html&text=Classification Metrics II - F1 Score&via="><img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/twitter-s.png"></a></span>
+
+                <span class="gplus"><a target="_blank" title="Google +" href="https://plus.google.com/share?url=https://SMassey25.github.io/Understanding_Data/blog_2.html&hl=fr" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/google-s.png"></a></span>
+
+                <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=https://SMassey25.github.io/Understanding_Data/blog_2.html&t=Classification Metrics II - F1 Score"><img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/facebook-s.png"></a></span>
+
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://SMassey25.github.io/Understanding_Data/blog_2.html&title=Classification Metrics II - F1 Score" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/linkedin-s.png"></a>
+
+                <span class="mail"><a href="mailto:?subject=Classification Metrics II - F1 Score&amp;body=Viens découvrir un article à propos de [Classification Metrics II - F1 Score] sur le site de Sara Massey. https://SMassey25.github.io/Understanding_Data/blog_2.html" title="Share by Email" target="_blank"><img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/mail-s.png"></a></span>
+            </div>
         </div>
-      </div>
+    </article>
+</section>
+  </article>
 
-      <hr />
-
-      <div class="row">
-        <div class="span12">
-          <div id="about">
-            <p>Proudly powered by <a href="http://twitter.github.com/bootstrap/">bootstrap</a>, <a href="http://docs.notmyidea.org/alexis/pelican/">pelican</a>, <a href="http://python.org">python</a> and <a href="http://www.julo.ch/about/">Alex</a>!</p>
-          </div><!-- /#about -->
-        </div><!-- /#contentinfo -->
-      </div>
-    </div>
+  <!-- Footer -->
+  <footer>
+    <p>
+      Blog powered by <a href="http://getpelican.com/">Pelican</a>, 
+      which takes great advantage of <a href="http://python.org">Python</a>.
+      Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+    </p>
+  </footer>
 
 
-  </body>
+</body>
 </html>
