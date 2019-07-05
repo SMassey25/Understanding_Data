@@ -4,17 +4,12 @@ And if you do understand, then keep reading.  &lt;/p&gt;
 &lt;h3&gt;So Why Use F1-Score?&lt;/h3&gt;
 &lt;p&gt;We don't want to implement and interpret both precision(P) and recall(R) on our classification models. F1 sort of represents precision and recall. One would think, that taking mean of the two classification metrics would solve our problem. Let's go through an example together and then we can re-visit this questions again.&lt;/p&gt;
 &lt;p&gt;Let's us analyze transaction dataset. We have 100 transactions and out of these we have 5 fraud cases. Our values would be as following:
-1. TP = 5
-2. FP = 95
-3. TN = 0
-4. FN = 0&lt;/p&gt;
+  1. TP = 5
+  2. FP = 95
+  3. TN = 0
+  4. FN = 0&lt;/p&gt;
 &lt;p&gt;Based on the above numbers, our precision and recall are following:&lt;/p&gt;
-&lt;p&gt;$$
-Precision = \frac{\text{TP}}{\text{TP + FP}} = \frac{\text{5}}{\text{5 + 95}} = 0.05 = 5\%
-$$&lt;/p&gt;
-&lt;p&gt;$$
-Recall = \frac{\text{TP}}{\text{TP + FN}} = \frac{\text{3}}{\text{3}} = 100\%
-$$&lt;/p&gt;
+&lt;p&gt;&lt;img alt="blog_2_precision_recall.JPG" src="images\blog_2_precision_recall.JPG"&gt;&lt;/p&gt;
 &lt;p&gt;Now if we take mean of both calculations, we get a model that did  52.5% on both precision and recall. Hopefully, you can see how this is not so good.&lt;/p&gt;
 &lt;p&gt;Let's us take a different approach and instead of using mean, we can try harmonic mean. Harmonic mean can be defined as the "reciprocal of the arithmetic mean of the reciprocal". Another way to look at harmonic mean would mean when X and Y are on opposite ends, i.e. 5 and 100. Mean gives a value that gives more weight to the bigger value, however in harmonic mean we get a value that gives more weight to the smaller value. Let me show you so math and hopefully that gives a more clear picture.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;scipy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;stats&lt;/span&gt;
@@ -67,10 +62,8 @@ Regular Mean of: [1000, 37, 35, 40, 35, 29, 51, 31, 33, 34, 30, 29, 33, 37, 36]
 
 &lt;p&gt;You can see that in the above three examples, the harmonic mean stayed in the range of 30 even though we added a 1000 in the range. However, mean got inflated to 99.33.
 In conclusion, harmonic mean gives out a weighted average that favors smaller numbers and ignore really
-big outliers. The formula of F1 score in terms of precision and recall is as follows:
-$$
-F1 = \frac{\text{2* Precision * Recall}}{\text{ Precision + Recall}}
-$$&lt;/p&gt;
+big outliers. The formula of F1 score in terms of precision and recall is as follows:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="blog_2_f1.JPG" src="images\blog_2_f1.JPG"&gt;&lt;/p&gt;
 &lt;p&gt;Hopefully, now you see how harmonic mean is better than regular mean. Let us implement F1-score then.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.metrics&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;f1_score&lt;/span&gt;
 &lt;span class="n"&gt;f1s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f1_score&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y_test&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;predicted&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;average&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;micro&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
