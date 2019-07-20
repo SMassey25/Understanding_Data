@@ -123,7 +123,7 @@ aside {
   text-align: center;
   padding-top: 8%;
   background-size: cover;
-  background-image: url('static\images\aside.jpg');
+  background-image: url('https://raw.githubusercontent.com/SMassey25/Understanding_Data/gh-pages/theme/images/aside.jpg');
 }
 
 aside > ul {
