@@ -123,6 +123,7 @@ aside {
   text-align: center;
   padding-top: 8%;
   background-size: cover;
+  background-image: url('static\images\aside.jpg');
 }
 
 aside > ul {
