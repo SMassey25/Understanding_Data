@@ -19,10 +19,10 @@ h1, h2 {
   text-align: center;
   margin-bottom: 50px;
   text-transform: none;
-  color: #1DAEDF;
+  color: #c0957c;
   line-height: 1;
   font-weight: 600;
-  font-family: "my homely";
+  font-family: "https://fonts.googleapis.com/css?family=Lora:400i&display=swap";
 }
 
 .latest
@@ -79,7 +79,7 @@ p.post_entry {
 article > header {
   list-style-type: none;
   padding: 0px 10px;
-  box-shadow: 0 0 0 2px #1DAEDF;
+  box-shadow: 0 0 0 2px #c0957c;
   -moz-border-radius: 5px 0;
   -webkit-border-radius: 5px 0;
   border-radius: 5px 5px;
@@ -100,10 +100,10 @@ article > header {
 
 
 /* Links */;
-a  { color:#1DAEDF; text-decoration:none; }
-a:visited { color:#1DAEDF; text-decoration:none; }
-a:link { color:#1DAEDF; text-decoration:none; }
-a:active { color:#1DAEDF; text-decoration:none; }
+a  { color:#c0957c; text-decoration:none; }
+a:visited { color:#c0957c; text-decoration:none; }
+a:link { color:#c0957c; text-decoration:none; }
+a:active { color:#c0957c; text-decoration:none; }
 a:hover { text-decoration: underline; }
 
 /* Code */
@@ -119,7 +119,7 @@ aside {
   position: fixed;
   top: 0; left: 0;
   padding: 30px;
-  background-color: #2980b9;
+  background-color: #c0957c;
   color: white;
   box-shadow: 0 0 3px black;
   text-align: center;
@@ -144,7 +144,7 @@ aside > h2 {
   border-radius: 50%;
   display: block;
   margin: 0 10px 20px 0;
-  box-shadow: 0px 0px 5px 3px #1DAEDF;
+  box-shadow: 0px 0px 5px 3px #c0957c;
   -webkit-transition: 200ms;
      -moz-transition: 200ms;
       -ms-transition: 200ms;
@@ -185,7 +185,7 @@ aside > h2 {
 
 .nav a:hover
 {
-    background-color: #328cc7;
+    background-color: #c0957c;
 }
 
 .list-bare
@@ -199,7 +199,7 @@ aside > h2 {
 {
   display: block;
   padding: 0.77273rem 0;
-  border-bottom: 1px solid #328cc7;
+  border-bottom: 1px solid #c0957c;
 }
 
 
