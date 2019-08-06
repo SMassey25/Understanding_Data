@@ -58,7 +58,7 @@ Gray Scaled Shape: (492, 538)
 
 
 &lt;h4&gt;Different Types and their meanings&lt;/h4&gt;
-&lt;p&gt;The shape of the images tells us alot. The third value in the shape of the original image indicates that the picture is a coloured image rather than a gray scale. See below the table below for more combinations of shape you might encounter.&lt;/p&gt;
+&lt;p&gt;The shape of the images tells us a lot. The third value in the shape of the original image indicates that the picture is a colored image rather than a gray scale. See below the table below for more combinations of shape you might encounter.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -86,11 +86,11 @@ Gray Scaled Shape: (492, 538)
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2&gt;Data Augmentation - Trick to multiplying your data&lt;/h2&gt;
-&lt;p&gt;To perform well on an image classifier you would need a lot of images to train. Web scrapping will get you started however you can drastically change the performace of your classifier by making an exhaustive dataset. Image data augmentation can be used to expland the size of our dataset by creating modified versions of the images in the existing dataset. You can scale(rescale/resize), flip(flipud/flipur), rotate or adding gaussian noise to get more of your limited dataset.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="more_data1.jpg" src="attachment:more_data1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;To perform well on an image classifier you would need a lot of images to train. Web scrapping will get you started however you can drastically change the performance of your classifier by making an exhaustive dataset. Image data augmentation can be used to expand the size of our dataset by creating modified versions of the images in the existing dataset. You can scale(rescale/resize), flip(flipud/flipur), rotate or adding gaussian noise to get more of your limited dataset.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="more_data1.jpg" src="images\more_data1.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;Rescalling and Resizing&lt;/h3&gt;
-&lt;p&gt;Rescalling and resizing are helpful tools that could be used for processing images. Rescaling shrinks an image by a given factor. In the example belore, the scaling factor is 0.25 and the image size of 492 X 538 will be reduced to 142 X125. The scalling factor can be a either a floating point or a tuple containg value for each axis.&lt;/p&gt;
-&lt;p&gt;On a similar note, resizing let's you specify the shape of the image. In the example below our original image (492, 538) with be shapped to 200 X 200 pixels.&lt;/p&gt;
+&lt;p&gt;Rescaling and resizing are helpful tools that could be used for processing images. Rescaling shrinks an image by a given factor. In the example before, the scaling factor is 0.25 and the image size of 492 X 538 will be reduced to 142 X125. The scaling factor can be a either a floating point or a tuple containing value for each axis.&lt;/p&gt;
+&lt;p&gt;On a similar note, resizing let's you specify the shape of the image. In the example below our original image (492, 538) with be shaped to 200 X 200 pixels.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;image_rescaled&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rescale&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;anti_aliasing&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Shape after rescalling : &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_rescaled&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="n"&gt;image_resized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;anti_aliasing&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -120,7 +120,7 @@ Gray Scaled Shape: (492, 538)
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="png" src="output_11_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="png" src="images\output_11_1.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Transforming / Altering the images&lt;/h2&gt;
 &lt;h3&gt;Flipping Images&lt;/h3&gt;
 &lt;p&gt;As the images are imported as an array, you can use numpy methods to flip images horizontally(fliplr) and vertically(flipud). However in the code below, I flipped the horizontally flipped image vertically to get a third type of flip. Too wordy right? Try to understand the code below, and I am sure you would get it.&lt;/p&gt;
@@ -156,7 +156,7 @@ Gray Scaled Shape: (492, 538)
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="png" src="output_14_0.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="png" src="images\output_14_0.png"&gt;&lt;/p&gt;
 &lt;h5&gt;Rotating with Random integer&lt;/h5&gt;
 &lt;p&gt;In the code below, we will be randomly generating a number between -40 and 40 and then will be using the number to rotate the image.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;imread&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;img_processing3.png&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -171,7 +171,7 @@ Gray Scaled Shape: (492, 538)
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="png" src="output_16_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="png" src="images\output_16_1.png"&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;imread&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;img_processing4.png&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;img&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;anti_aliasing&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -199,7 +199,7 @@ Gray Scaled Shape: (492, 538)
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="png" src="output_17_0.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="png" src="images\output_17_0.png"&gt;&lt;/p&gt;
 &lt;h4&gt;Saving the transformed images&lt;/h4&gt;
 &lt;p&gt;You can import imsave from io to save the new files on your computer. Imsave saves the new file on the same file level from where you are running the script. This method use two parameters, new file name as fname and the file you want to save as arr. 'fname' also let's you change the format of the file. For instance, you can save a jpg file as png file or vice versa just by changing the name of the file.&lt;/p&gt;
 &lt;p&gt;Note: The picture imported below is a jpg and we would change the format to png.&lt;/p&gt;
@@ -212,7 +212,7 @@ Gray Scaled Shape: (492, 538)
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="editted_image.JPG" src="attachment:editted_image.JPG"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="editted_image.JPG" src="images\editted_image.JPG"&gt;&lt;/p&gt;
 &lt;h2&gt;Making Changes to all the pictures&lt;/h2&gt;
 &lt;p&gt;You can certainly make a loop to get the name of the files and load then to make the changes. However, Scikit-image provides your a feature called &lt;em&gt;Image Collection&lt;/em&gt; that let's you load all the images in the memory in one go. Image Collection takes a wild card as it's parameters. To begin with, let me show you a simple for loop to load the images and then I can show you how image collection can do the same job in one line.&lt;/p&gt;
 &lt;h5&gt;For Loop to load the images.&lt;/h5&gt;
@@ -290,14 +290,14 @@ Gray Scaled Shape: (492, 538)
 
 
 &lt;p&gt;All in all, Scikit image is good package to start data augmentation to expand your dataset. You can surely use different combinations to increase your dataset even more. For instance, add different type of noise on a rotated images.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="possibilities.jpg" src="attachment:possibilities.jpg"&gt;&lt;/p&gt;</content><category term="python"></category></entry><entry><title>Pickling in Python!</title><link href="https://SMassey25.github.io/Understanding_Data/blog-3.html" rel="alternate"></link><published>2019-07-29T09:33:00-04:00</published><updated>2019-07-29T09:33:00-04:00</updated><author><name>Sara Massey</name></author><id>tag:smassey25.github.io,2019-07-29:/Understanding_Data/blog-3.html</id><summary type="html">&lt;p&gt;Once you have been through EDA and built a satisfactory model with tuned hyperparameters, you are ready to predict using new values. However, you do not want to train your model every time you want to predict on new values. You just want to use the previously trained model and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Once you have been through EDA and built a satisfactory model with tuned hyperparameters, you are ready to predict using new values. However, you do not want to train your model every time you want to predict on new values. You just want to use the previously trained model and run new values through it. This is where pickle, a Python's module for serializing and de-serializing comes in.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="possibilities.jpg" src="images\possibilities.jpg"&gt;&lt;/p&gt;</content><category term="python"></category></entry><entry><title>Pickling in Python!</title><link href="https://SMassey25.github.io/Understanding_Data/blog-3.html" rel="alternate"></link><published>2019-07-29T09:33:00-04:00</published><updated>2019-07-29T09:33:00-04:00</updated><author><name>Sara Massey</name></author><id>tag:smassey25.github.io,2019-07-29:/Understanding_Data/blog-3.html</id><summary type="html">&lt;p&gt;Once you have been through EDA and built a satisfactory model with tuned hyperparameters, you are ready to predict using new values. However, you do not want to train your model every time you want to predict on new values. You just want to use the previously trained model and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Once you have been through EDA and built a satisfactory model with tuned hyperparameters, you are ready to predict using new values. However, you do not want to train your model every time you want to predict on new values. You just want to use the previously trained model and run new values through it. This is where pickle, a Python's module for serializing and de-serializing comes in.&lt;/p&gt;
 &lt;h2&gt;What is pickling&lt;/h2&gt;
 &lt;p&gt;As said before, pickle can be used to serialize and de-serialize the object. So what do I mean by serialization and de-serialization of the objects? Serialization is a process of converting an object to a byte stream, storing the byte stream in memory for later use. De-serialization then takes the byte stream from the memory and retrieves the original object. Therefore, pickling an object converts it to a byte stream(serialization), making sure that the character stream contains all the information to retrieve the original object(de-serialization). You can pickle data stored in list, tuples, dictionaries. You can even pickle your classes, functions and tuned models.&lt;/p&gt;
 &lt;p&gt;In this post, I will pickle a dataset that can be used in other jupyter notebook. However using the same steps you can pickle classes, functions and even models with their hyper tuned parameters.&lt;/p&gt;
 &lt;h6&gt;Serialization&lt;/h6&gt;
-&lt;p&gt;&lt;img alt="blog3_pickle.jpg" src="attachment:blog3_pickle.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="blog3_pickle.jpg" src="images\blog3_pickle.jpg"&gt;&lt;/p&gt;
 &lt;h6&gt;De - serialization&lt;/h6&gt;
-&lt;p&gt;&lt;img alt="blog3_pickle2.jpg" src="attachment:blog3_pickle2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="blog3_pickle2.jpg" src="images\blog3_pickle2.jpg"&gt;&lt;/p&gt;
 &lt;h3&gt;Pickling you Data?&lt;/h3&gt;
 &lt;p&gt;But why? Once you are done with cleaning, you might want to use the cleaned dataset in a different model or a different jupyter notebook. Therefore having a pickled dataset, would allow you to &lt;em&gt;dump&lt;/em&gt; you data in a file and then be &lt;em&gt;open&lt;/em&gt; in a different dataset. Let's spin up some data and then store pickle it.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;

@@ -83,9 +83,9 @@
 <p>As said before, pickle can be used to serialize and de-serialize the object. So what do I mean by serialization and de-serialization of the objects? Serialization is a process of converting an object to a byte stream, storing the byte stream in memory for later use. De-serialization then takes the byte stream from the memory and retrieves the original object. Therefore, pickling an object converts it to a byte stream(serialization), making sure that the character stream contains all the information to retrieve the original object(de-serialization). You can pickle data stored in list, tuples, dictionaries. You can even pickle your classes, functions and tuned models.</p>
 <p>In this post, I will pickle a dataset that can be used in other jupyter notebook. However using the same steps you can pickle classes, functions and even models with their hyper tuned parameters.</p>
 <h6>Serialization</h6>
-<p><img alt="blog3_pickle.jpg" src="attachment:blog3_pickle.jpg"></p>
+<p><img alt="blog3_pickle.jpg" src="images\blog3_pickle.jpg"></p>
 <h6>De - serialization</h6>
-<p><img alt="blog3_pickle2.jpg" src="attachment:blog3_pickle2.jpg"></p>
+<p><img alt="blog3_pickle2.jpg" src="images\blog3_pickle2.jpg"></p>
 <h3>Pickling you Data?</h3>
 <p>But why? Once you are done with cleaning, you might want to use the cleaned dataset in a different model or a different jupyter notebook. Therefore having a pickled dataset, would allow you to <em>dump</em> you data in a file and then be <em>open</em> in a different dataset. Let's spin up some data and then store pickle it.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
