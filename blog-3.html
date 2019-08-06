@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>Pickling in Python!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Sara Massey">
+
+  <!-- <link rel="shortcut icon" href=""> -->
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="Sara Massey">
+  <meta itemprop="image" content="">
+  <meta itemprop="description" content="">
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="https://SMassey25.github.io/Understanding_Data/theme/css/pygments.css" type="text/css" />
+
+  <!-- Feed Meta Data -->
+    <link href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Sara Massey ATOM Feed" />
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="https://SMassey25.github.io/Understanding_Data/blog-3.html">
+<meta name="twitter:title" content="Sara Massey ~ Pickling in Python!">
+<meta name="twitter:description" content="<p>Once you have been through EDA and built a satisfactory model with tuned hyperparameters, you are ready to predict using new values. However, you do not want to train your model every time you want to predict on new values. You just want to use the previously trained model and …</p>">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Sara Massey ~ Pickling in Python!" />
+<meta property="og:description" content="<p>Once you have been through EDA and built a satisfactory model with tuned hyperparameters, you are ready to predict using new values. However, you do not want to train your model every time you want to predict on new values. You just want to use the previously trained model and …</p>" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside>
+    <!--<center><a href="https://SMassey25.github.io/Understanding_Data"><img id="avatar" src=""></a></center>-->
+    <h1>Sara Massey</h1>
+      <p>Aspiring Data Scientist Here</p>
+    <br>
+
+
+    <nav class="nav">
+      <ul class="list-bare">
+
+          <li><a class="nav__link" href="https://SMassey25.github.io/Understanding_Data">Blog</a></li>
+
+
+      </ul>
+    </nav>
+
+    <p class="social">
+        <a href="https://www.linkedin.com/in/saramassey25" target="_blank" ><img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/linkedin.png"></a>
+        <a href="https://github.com/username" target="_blank" ><img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/github.png"></a>
+      <a href="https://SMassey25.github.io/Understanding_Data/feeds/all.atom.xml" rel="alternate">
+        <img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/rss.png"></a>
+    </p>
+
+    <!--
+    <h2>Categories</h2>
+    <ul class="navbar">
+      <li class="active"><a href="https://SMassey25.github.io/Understanding_Data/category/misc.html">misc</a></li>
+    </ul>
+    -->
+  </aside>
+
+  <!-- Content -->
+  <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="https://SMassey25.github.io/Understanding_Data/blog-3.html" rel="bookmark" title="Permalink to Pickling in Python!">Pickling in Python!</a></h2>
+        <div class="entry-content blog-post">
+            <p>Once you have been through EDA and built a satisfactory model with tuned hyperparameters, you are ready to predict using new values. However, you do not want to train your model every time you want to predict on new values. You just want to use the previously trained model and run new values through it. This is where pickle, a Python's module for serializing and de-serializing comes in.</p>
+<h2>What is pickling</h2>
+<p>As said before, pickle can be used to serialize and de-serialize the object. So what do I mean by serialization and de-serialization of the objects? Serialization is a process of converting an object to a byte stream, storing the byte stream in memory for later use. De-serialization then takes the byte stream from the memory and retrieves the original object. Therefore, pickling an object converts it to a byte stream(serialization), making sure that the character stream contains all the information to retrieve the original object(de-serialization). You can pickle data stored in list, tuples, dictionaries. You can even pickle your classes, functions and tuned models.</p>
+<p>In this post, I will pickle a dataset that can be used in other jupyter notebook. However using the same steps you can pickle classes, functions and even models with their hyper tuned parameters.</p>
+<h6>Serialization</h6>
+<p><img alt="blog3_pickle.jpg" src="attachment:blog3_pickle.jpg"></p>
+<h6>De - serialization</h6>
+<p><img alt="blog3_pickle2.jpg" src="attachment:blog3_pickle2.jpg"></p>
+<h3>Pickling you Data?</h3>
+<p>But why? Once you are done with cleaning, you might want to use the cleaned dataset in a different model or a different jupyter notebook. Therefore having a pickled dataset, would allow you to <em>dump</em> you data in a file and then be <em>open</em> in a different dataset. Let's spin up some data and then store pickle it.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">random_dict</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s1">&#39;volts&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+     <span class="s1">&#39;current&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+ <span class="p">}</span>
+<span class="n">random_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">random_dict</span><span class="p">)</span>
+<span class="n">random_data</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>volts</th>
+      <th>current</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4</th>
+      <td>0.355205</td>
+      <td>0.055690</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.697468</td>
+      <td>0.668440</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.102049</td>
+      <td>0.284304</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;random_data_pick.pkl&#39;</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">random_data</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+<span class="n">output</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+
+<p><strong><em>*Few things to remember</em></strong>*: Open the file and don't forget wb(write byte). Then use pickle.dump(), that uses two arguments: object you want to pickle and the file to which the object has to be saved. Also, don't forget to close the file. Lastly, this would create a file on the same file level as your notebook.</p>
+<p>Now that you have pickled the data, you can use the data in a without going over the EDA steps in a different notebook. Let us <em>load</em> in the data.</p>
+<div class="highlight"><pre><span></span><span class="n">input_</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;random_data_pick.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">pickled_dataframe</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+<span class="n">input_</span><span class="o">.</span><span class="n">close</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>&lt;function BufferedReader.close&gt;
+</pre></div>
+
+
+<p>Now let us just make sure that we unpickled the file correct.</p>
+<div class="highlight"><pre><span></span><span class="n">pickled</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pickled_dataframe</span><span class="p">)</span>
+<span class="n">pickled</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>volts</th>
+      <th>current</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>6</th>
+      <td>0.115438</td>
+      <td>0.134317</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.413739</td>
+      <td>0.321276</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.145731</td>
+      <td>0.728365</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Personally, I pickle data and model that can be used in a web application. See my GitHub page for my hackathon project - Pokémon and world happiness repo. to learn more about linking your model to a web application.</p>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="https://SMassey25.github.io/Understanding_Data/author/sara-massey.html">@Sara Massey</a>
+            <span> in </span>
+            <span class="post_category"><a href="https://SMassey25.github.io/Understanding_Data/category/misc.html" rel="bookmark" title="Permalink to misc">[ misc ]</a></span>
+            <span class="post_date">Mon 29 July 2019</span>
+            <div><span>Tags : </span>
+                <span><a href="https://SMassey25.github.io/Understanding_Data/tag/python.html">#python, </a></span>
+            </div>
+
+            <div class="entry-social">
+                <span class="twitter"><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=https://SMassey25.github.io/Understanding_Data/blog-3.html&text=Pickling in Python!&via="><img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/twitter-s.png"></a></span>
+
+                <span class="gplus"><a target="_blank" title="Google +" href="https://plus.google.com/share?url=https://SMassey25.github.io/Understanding_Data/blog-3.html&hl=fr" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/google-s.png"></a></span>
+
+                <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=https://SMassey25.github.io/Understanding_Data/blog-3.html&t=Pickling in Python!"><img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/facebook-s.png"></a></span>
+
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://SMassey25.github.io/Understanding_Data/blog-3.html&title=Pickling in Python!" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/linkedin-s.png"></a>
+
+                <span class="mail"><a href="mailto:?subject=Pickling in Python!&amp;body=Viens découvrir un article à propos de [Pickling in Python!] sur le site de Sara Massey. https://SMassey25.github.io/Understanding_Data/blog-3.html" title="Share by Email" target="_blank"><img src="https://SMassey25.github.io/Understanding_Data/theme/images/icons/mail-s.png"></a></span>
+            </div>
+        </div>
+    </article>
+</section>
+  </article>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      Copyright © Sara Massey 2019
+    </p>
+  </footer>
+
+
+</body>
+</html>
